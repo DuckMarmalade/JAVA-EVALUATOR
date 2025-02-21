@@ -1,9 +1,6 @@
 from langchain_groq import ChatGroq
 import json
 
-from java1 import code
-from java2 import sort
-from compiler2 import JavaSyntaxFixer
 class JavaCodeExtractor:
     def __init__(self, model_name: str, api_key: str, temperature: float = 0.2):
         self.chatgroq = ChatGroq(
@@ -208,47 +205,4 @@ class JavaCodeExtractor:
         except json.JSONDecodeError:
             # If response is not valid JSON, return raw content
             return response.content
-
-if __name__ == "__main__":
-    # I dont rememeber what this code is for lol 
-    java_code = code
-    # def create_component_extraction_prompt(json_response):
-    #     prompt = f"""
-    #     Convert the following JSON structure into a flat list of components. Each component should be represented as a dictionary with 'type', 'name', and 'details' keys. Include all classes, interfaces, methods, constructors, and fields.
-
-    #     JSON Input:
-    #     {json_response}
-
-    #     Return ONLY a Python list of dictionaries containing the components.
-    #     """
-    #     return prompt
-
-
-# class ComponentProcessor:
-#     def __init__(self, model_name: str, api_key: str):
-#         self.chatgroq = ChatGroq(model_name=model_name, api_key=api_key)
-    
-#     def process_components(self, json_response):
-#         prompt = create_component_extraction_prompt(json_response)
-#         response = self.chatgroq.invoke(prompt)
-#         try:
-#             return json.loads(response.content)
-#         except json.JSONDecodeError:
-#             return response.content
-
-# Usage
-# if __name__ == "__main__":
-#     java_file_path = "code.java" 
-#     extractor = JavaCodeExtractor(model_name="llama-3.3-70b-versatile", api_key="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")
-#     json_string = extractor.extract_components(java_file_path)
-#     # editedreult=json_result.strip("json`")
-#     import ast
-
-#     json_string = json_string.replace("```json", "")
-#     json_string = json_string.replace("```", "")
-#     # op strat here im a genius 
-#     json_dict = ast.literal_eval(json_string)
-#     print (type(json_dict))
-   
-    
     

@@ -91,10 +91,3 @@ class JavaSyntaxFixer:
             else:
                 print("LLM failed to provide a correction. Exiting...")
                 break
-
-
-
-# if __name__ == "__main__":
-    
-#     fixer = JavaSyntaxFixer(model_name="deepseek-r1-distill-qwen-32b", api_key="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")
-#     fixer.fix_errors_with_llm("code.java")

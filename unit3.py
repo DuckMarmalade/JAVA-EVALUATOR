@@ -5,8 +5,8 @@ import numpy as np
 import os
 import pickle
 import ast
-from compiler2 import JavaSyntaxFixer
-from javadecom import JavaCodeExtractor as JsonExtractor
+from unit1 import JavaSyntaxFixer
+from unit2 import JavaCodeExtractor as JsonExtractor
 class JavaCodeExtractor:
     def __init__(self, model_name: str, api_key: str, temperature: float = 0.2):
         self.chatgroq = ChatGroq(
@@ -278,8 +278,8 @@ class JavaCodeExtractor:
 
 if __name__ == "__main__":
     extractor = JavaCodeExtractor(
-        model_name="llama-3.3-70b-versatile",
-        api_key="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"
+        model_name="model_name",
+        api_key="api_key"
     )
     java_file_path = 'code.java'
     
