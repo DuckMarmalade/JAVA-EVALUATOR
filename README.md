@@ -10,4 +10,4 @@
 instructions
 1) please install requirements
 2) Provide model_name and api_key
-3) python run unit3.py.py 
+3) python run unit3.py
