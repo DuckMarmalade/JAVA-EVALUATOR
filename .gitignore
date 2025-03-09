@@ -1,7 +1,3 @@
 venv/
 __pycache__/
 unit3_3.py 
-analysis_output_20250309_124939.json
-analysis_output.json
-java_analysis_memory.pkl
-java_analyzer_debug.log
