@@ -12,6 +12,7 @@ This toolkit leverages LLMs and `javac` to detect, analyze, and fix errors in Ja
 | `unit1.py`    | Integrates LLM + `javac` for iterative error fixing. |
 | `unit2.py`    | Decomposes Java code for analysis. |
 | `unit3.py`    | Analyzes code components using RAG-based memory. |
+| `unit3_1.py`    | Analyzes code components using RAG-based memory. Builds a Semantic link for consistency. Evaluation in 5 steps including a functtion to add rubrik|
 | `viewdb.py`   | Displays embeddings and stored text from the local database. |
 | `requirements.txt` | Lists all required dependencies. |
 
