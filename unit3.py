@@ -278,8 +278,8 @@ class JavaCodeExtractor:
 
 if __name__ == "__main__":
     extractor = JavaCodeExtractor(
-        model_name="model_name",
-        api_key="api_key"
+        model_name="llama-3.3-70b-versatile",
+        api_key="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"
     )
     java_file_path = 'code.java'
     
