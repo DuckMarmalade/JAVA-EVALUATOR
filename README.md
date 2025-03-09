@@ -33,6 +33,8 @@ This toolkit leverages LLMs and `javac` to detect, analyze, and fix errors in Ja
 - Ensure `javac` is installed and accessible in the system path.
 - `unit1.py` provides iterative fixes using LLM + `javac`.
 - `unit3.py` requires embeddings and memory storage for optimal performance.
+- install `Colorful Comments` by `Parth Rastogi` for improved comment readability 
+
 
 ## License
 This project is intended for research and debugging purposes only.
