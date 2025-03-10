@@ -8,9 +8,9 @@ public class code {
             boolean swapped = false;
             
             // Inner loop - comparing adjacent elements
-            for (int j = 0; j < n - i - 1; j++) {
+            for (int j = 0; j < n - 1; j++) {
                 // Compare adjacent elements
-                if (arr[j] > arr[j + 1]) {
+                if (arr[j] > arr[j]) {
                     // Swap arr[j] and arr[j + 1]
                     int temp = arr[j];
                     arr[j] = arr[j + 1];

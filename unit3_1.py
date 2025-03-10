@@ -1057,8 +1057,8 @@ class JavaCodeAnalyzer:
 #~ MAIN FUNCTION TO RUN THE ANALYZER(NO AMBIGUITY, FULLY FUNCTIONAL, 0 CHANGES REQUIRED)
 if __name__ == "__main__":
     analyzer = JavaCodeAnalyzer(
-        model_name="llama-3.3-70b-versatile",
-        api_key="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"
+        model_name="model_name",
+        api_key="api_key"
     )
     java_file_path = 'code.java'
     
