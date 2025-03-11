@@ -14,10 +14,11 @@ class JavaCodeExtractor:
         # First, fix any syntax errors in the Java code before extraction
         # self.syntax_fixer.fix_errors_with_llm(java_file_path)
         
-        # Read the fixed Java code
+        #* Read the fixed Java code
         with open(java_file_path, "r") as file:
             java_code = file.read()
-        # enums yet to be added . to do later 
+        #^ enums yet to be added . to do later 
+        #^ Null is produced ometimes instead of empty list for fields that are empty. this leads to errors. 
         prompt = f"""
         Analyze the following Java code and extract its components in a structured format with their dependencies. 
         Do not truncate body of classes, interfaces and methods.
@@ -199,10 +200,10 @@ class JavaCodeExtractor:
             }}]
         }}"""
         response = self.chatgroq.invoke(prompt)
-        # Convert string response to JSON
+        #*Convert string response to JSON
         try:
             return json.loads(response.content)
         except json.JSONDecodeError:
-            # If response is not valid JSON, return raw content
+            #*If response is not valid JSON, return raw content
             return response.content
     

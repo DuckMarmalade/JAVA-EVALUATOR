@@ -10,7 +10,9 @@ import traceback
 import datetime
 from unit1 import JavaSyntaxFixer
 from unit2 import JavaCodeExtractor as JsonExtractor
-
+import concurrent.futures
+import multiprocessing
+from typing import List, Dict, Any
 #! Alert : needs to be exmined 
 #^ TODO: changes to be made 
 #& RAG RELATED COMMENTS 
@@ -159,13 +161,26 @@ class JavaCodeAnalyzer:
                 "embeddings_dimension": len(embedding) if isinstance(embedding, np.ndarray) else "unknown"
             })
             
-            #*Save to file
-            self._save_memory()
-            self.logger.log("Memory saved to file")
+        #     #*Save to file
+        #     self._save_memory()
+        #     self.logger.log("Memory saved to file")
+        # except Exception as e:
+        #     self.logger.log(f"Warning: Failed to update memory: {str(e)}")
+        #     self.logger.log(traceback.format_exc())
+
+        #* Don't save memory after every update - only save periodically to improve performance
+        #* We'll save every 10 updates or when analysis_type is "evaluation" (end of cycle)
+            self._memory_updates_since_save = getattr(self, '_memory_updates_since_save', 0) + 1
+        
+            if analysis_type == "evaluation" or self._memory_updates_since_save >= 10:
+                self._save_memory()
+                self._memory_updates_since_save = 0
+                self.logger.log("Memory saved to file (batch operation)")
+        
         except Exception as e:
             self.logger.log(f"Warning: Failed to update memory: {str(e)}")
             self.logger.log(traceback.format_exc())
-    
+        
     #~ FUNCTION TO CALCULATE COSINE SIMILARITY(NO AMBIGUITY, FULLY FUNCTIONAL, 0 CHANGES REQUIRED)
     def cosine_similarity(self, a, b):
         try:
@@ -403,35 +418,36 @@ class JavaCodeAnalyzer:
             "description_length": len(details.get('description', ''))
         })
         
-        #*Search for similar analyses from first pass only (with safe implementation)
-        #^ QUERY FORMAT CAN BE IMPROVED
-        query = f"{component_type} {details['name']} {details['description']}"
-        self.logger.log(f"Searching for similar analyses", {"query": query})
-        #*
-        similar_analyses = self.search_similar_analyses(
-            query, 
-            component_type=component_type, 
-            analysis_type="first_pass"
-        )
+        # *Search for similar analyses from first pass only (with safe implementation)
+        # ^ QUERY FORMAT CAN BE IMPROVED
+        # query = f"{component_type} {details['name']} {details['description']}"
+        # self.logger.log(f"Searching for similar analyses", {"query": query})
         
-        self.logger.log("Similar analyses search results", {
-            "found_count": len(similar_analyses)
-        })
+        # similar_analyses = self.search_similar_analyses(
+        #     query, 
+        #     component_type=component_type, 
+        #     analysis_type="first_pass"
+        # )
         
-        #*Safely handle potentially empty or differently structured similar_analyses
-        previous_context = ""
-        #? seems correct (not sure as rag functions are yet to be examined)
-        if similar_analyses:
-            try:
-                previous_context = "\n".join([text for _, text, _, _ in similar_analyses])
-                self.logger.log("Previous context extracted", {"length": len(previous_context)})
-            except (ValueError, TypeError) as e:
-                #*Fallback for different structure
-                self.logger.log(f"Error extracting previous context: {str(e)}")
-                previous_context = "\n".join([str(item) for item in similar_analyses])
-        #^ PROMPT INSTRUCTIONS CAN BE IMPROVED. eg any potential issues in the semantics of the code strictly and not the ones regardig readability and structure
+        # self.logger.log("Similar analyses search results", {
+        #     "found_count": len(similar_analyses)
+        # })
+        
+        # #*Safely handle potentially empty or differently structured similar_analyses
+        # previous_context = ""
+        # #? seems correct (not sure as rag functions are yet to be examined)
+        # if similar_analyses:
+        #     try:
+        #         previous_context = "\n".join([text for _, text, _, _ in similar_analyses])
+        #         self.logger.log("Previous context extracted", {"length": len(previous_context)})
+        #     except (ValueError, TypeError) as e:
+        #         #*Fallback for different structure
+        #         self.logger.log(f"Error extracting previous context: {str(e)}")
+        #         previous_context = "\n".join([str(item) for item in similar_analyses])
+        # #^ PROMPT INSTRUCTIONS CAN BE IMPROVED. eg any potential issues in the semantics of the code strictly and not the ones regardig readability and structure
         prompt = f"""
-        Analyze this Java {component_type} component:
+        You are evaluating a Java {component_type} component as part of a lab test submission.
+        Perform a HIGH-LEVEL SCAN of the following component:
 
         Component Name: {details['name']}
         
@@ -441,15 +457,14 @@ class JavaCodeAnalyzer:
         Implementation:
         {details['implementation']}
         
-        {previous_context if previous_context else ""}
+        TASK: Provide a brief high-level analysis focusing ONLY on:
+        1. Primary purpose of this component (What does it aim to accomplish?)
+        2. Component structure and organization (Is it well-structured?)
+        3. Obvious syntax and naming issues (Any glaring problems?)
+        4. Completeness (Does it appear to implement the necessary functionality?)
         
-        Provide a technical analysis that includes:
-        1. The purpose and functionality of this component
-        2. Key characteristics (e.g., visibility, mutability, complexity)
-        3. Any potential issues or concerns at the component level
-        4. Code quality assessment (readability, structure, commenting)
-        
-        Keep your response under 100 words and focus on this component in isolation.
+        This is just an initial scan - deeper semantic analysis will be performed separately.
+        Keep your response concise (under 100 words) and focus only on immediately observable aspects.
         """
         
         self.logger.log("Sending prompt to ChatGroq", {"prompt_length": len(prompt)})
@@ -525,9 +540,12 @@ class JavaCodeAnalyzer:
         
         #^ PROMPT INSTRUCTIONS CAN BE IMPROVED. eg any potential issues in the semantics of the code strictly and not the ones regardig readability and structure
         prompt = f"""
-        DETAILED ANALYSIS FOR: {details['name']} ({component_type})
+        You are evaluating a Java {component_type} for a lab test submission. 
+        Perform an IN-DEPTH ANALYSIS of the semantics and logic:
 
-        Initial Analysis:
+        COMPONENT: {details['name']} ({component_type})
+
+        Initial Scan Results:
         {component.get('first_pass_analysis', 'Not available')}
         
         Component Details:
@@ -538,21 +556,33 @@ class JavaCodeAnalyzer:
         
         Related Components:
         {related_context if related_context else "No related components found."}
-
-        {previous_context if previous_context else ""}
         
         Implementation:
         {details['implementation']}
         
-        Provide a comprehensive evaluation that includes:
-        1. How this component interacts with related components
-        2. Dependency analysis and potential coupling issues
-        3. Potential bottlenecks, inefficiencies, or design flaws
-        4. Suggestions for improvement based on best practices
-        5. Evaluation of error handling and edge cases
-        6. Inconsistencies with related components
-        
-        Be specific and provide actionable insights. Focus on the component's role within the larger system.
+        TASK: Conduct a detailed examination of the semantics and logic, focusing on:
+
+        1. ALGORITHM CORRECTNESS:
+        - Is the implementation logically correct?
+        - Are there edge cases that aren't handled?
+        - For the given problem domain, does the solution work as expected?
+
+        2. LOGICAL FLOW AND CONTROL STRUCTURES:
+        - Is the logical flow appropriate for the task?
+        - Are control structures (loops, conditionals) used effectively?
+        - Could the logic be simplified or optimized?
+
+        3. DEPENDENCY RELATIONSHIPS:
+        - How does this component interact with related components?
+        - Are there coupling issues or dependency problems?
+        - Is the component cohesive (doing one thing well)?
+
+        4. SEMANTIC CORRECTNESS:
+        - Do variables and operations have correct semantic meaning?
+        - Are there logical inconsistencies or contradictions?
+        - Could a different approach better solve the problem?
+
+        Provide specific examples from the code to support your analysis. Focus on the correctness and quality of the implementation rather than style issues.
         """
         
         self.logger.log("Sending prompt to ChatGroq", {"prompt_length": len(prompt)})
@@ -583,70 +613,75 @@ class JavaCodeAnalyzer:
         first_pass = component.get('first_pass_analysis', 'Not available')
         second_pass = component.get('second_pass_analysis', 'Not available')
         
-        #*Safely retrieve similar analyses for evaluation
-        query = f"{component_type} {details['name']} evaluation"
-        self.logger.log("Searching for similar evaluations", {"query": query})
-        similar_analyses = self.search_similar_analyses(
-            query, 
-            component_type=component_type, 
-            analysis_type="evaluation"
-        )
-        self.logger.log("Found similar evaluations", {"count": len(similar_analyses)})
+        # #*Safely retrieve similar analyses for evaluation
+        # query = f"{component_type} {details['name']} evaluation"
+        # self.logger.log("Searching for similar evaluations", {"query": query})
+        # similar_analyses = self.search_similar_analyses(
+        #     query, 
+        #     component_type=component_type, 
+        #     analysis_type="evaluation"
+        # )
+        # self.logger.log("Found similar evaluations", {"count": len(similar_analyses)})
         
-        #*Safely extract previous context
-        #! PREVIOUS CONTEXT IS NOT REQUIRED FOR EVALUATION. TO BE REMOVED IMMEDIATELY AFTER DISCUSSION. NOT REMOVING COZ IT MAY BE REQUIRED FOR FUTURE USE EXAMPLE TO MAINTAIN CONISTENCY ACROSS SCORING AND EVALUATION
-        previous_context = ""
+        # #*Safely extract previous context
+        # #! PREVIOUS CONTEXT IS NOT REQUIRED FOR EVALUATION. TO BE REMOVED IMMEDIATELY AFTER DISCUSSION. NOT REMOVING COZ IT MAY BE REQUIRED FOR FUTURE USE EXAMPLE TO MAINTAIN CONISTENCY ACROSS SCORING AND EVALUATION
+        # previous_context = ""
         
-        if similar_analyses:
-            try:
-                previous_context = "\n".join([text for _, text, _, _ in similar_analyses])
-                self.logger.log("Previous evaluation context extracted", {"length": len(previous_context)})
-            except (ValueError, TypeError) as e:
-                self.logger.log(f"Error extracting previous context: {str(e)}")
-                #*Fallback for different structure
-                previous_context = "\n".join([str(item) for item in similar_analyses])
+        # if similar_analyses:
+        #     try:
+        #         previous_context = "\n".join([text for _, text, _, _ in similar_analyses])
+        #         self.logger.log("Previous evaluation context extracted", {"length": len(previous_context)})
+        #     except (ValueError, TypeError) as e:
+        #         self.logger.log(f"Error extracting previous context: {str(e)}")
+        #         #*Fallback for different structure
+        #         previous_context = "\n".join([str(item) for item in similar_analyses])
 
         #! PROMPT NEEDS TO BE CHANGED AFTER DICUSSION . A RUBRIC CAN GO HERE. 
         prompt = f"""
-        FINAL EVALUATION FOR: {details['name']} ({component_type})
+        You are evaluating a Java {component_type} for a lab test submission. 
+        Provide a FINAL EVALUATION using the following structured rubric:
 
-        First Pass Analysis:
+        COMPONENT: {details['name']} ({component_type})
+
+        First Pass Analysis (Initial Scan):
         {first_pass}
         
-        Second Pass Analysis:
+        Second Pass Analysis (In-depth Examination):
         {second_pass}
-        
-        Component Details:
-        {details['component_details']}
         
         Implementation:
         {details['implementation']}
         
-        {previous_context if previous_context else ""}
+        EVALUATION RUBRIC:
         
-        Using a structured evaluation approach, provide:
+        1. CORRECTNESS (0-4 points)
+        - 4: Solution is completely correct, handles all expected inputs and edge cases
+        - 3: Solution is mostly correct with minor logical errors
+        - 2: Solution has significant logical errors but shows understanding of the problem
+        - 1: Solution has fundamental misunderstandings of the problem
+        - 0: Solution is completely incorrect or non-functional
         
-        1. STRENGTHS (3-5 bullet points):
-           - What this component does well
-           - Good practices implemented
-           - Effective design choices
+        2. COMPLETENESS (0-3 points)
+        - 3: Implements all required functionality completely
+        - 2: Implements most required functionality
+        - 1: Implements some required functionality
+        - 0: Implements little to none of the required functionality
         
-        2. WEAKNESSES (3-5 bullet points):
-           - Potential issues or bugs
-           - Design flaws or anti-patterns
-           - Missing safeguards or validations
+        3. EFFICIENCY (0-2 points)
+        - 2: Uses optimal algorithms and approaches
+        - 1: Solution works but uses suboptimal approaches
+        - 0: Solution has serious efficiency issues
         
-        3. RECOMMENDATIONS (3-5 bullet points):
-           - Specific improvements with examples
-           - Alternative approaches
-           - Best practices to implement
+        4. CODE QUALITY (0-1 point)
+        - 1: Code is well-structured, readable, and follows good practices
+        - 0: Code has significant structure or readability issues
         
-        4. COMPONENT SCORE (1-10):
-           - Score this component on quality, readability, efficiency, and maintainability
-           - Briefly justify the score
+        For each rubric item:
+        1. Assign a specific score
+        2. Provide brief justification with specific examples from the code
+        3. Identify what would be needed for a higher score (if applicable)
         
-        5. KEY SEMANTIC CHARACTERISTICS:
-           - Identify 3-5 core semantic aspects of this component for later comparison
+        Conclude with a TOTAL SCORE (sum of all categories, 0-10 points) and 2-3 specific recommendations for improvement.
         """
         
         self.logger.log("Sending evaluation prompt to ChatGroq", {"prompt_length": len(prompt)})
@@ -936,6 +971,66 @@ class JavaCodeAnalyzer:
         self.logger.log("Summary report generation completed")
         return report
     
+
+
+    def parallelize_first_pass(self, components: List[Dict[str, Any]], component_type: str) -> List[Dict[str, Any]]:
+        """
+        Analyze components in parallel using ThreadPoolExecutor.
+        This speeds up the first pass analysis by processing multiple components concurrently.
+        
+        Args:
+            components: List of components to analyze
+            component_type: Type of the components (classes, methods, etc.)
+            
+        Returns:
+            List of analyzed components with first_pass_analysis added
+        """
+        self.logger.log(f"Starting parallel first pass analysis for {len(components)} {component_type}")
+        
+        # Use max_workers based on CPU count with a reasonable limit
+        # For I/O bound tasks like API calls, we can use more workers than CPU cores
+        max_workers = min(32, multiprocessing.cpu_count() * 4)
+        
+        analyzed_components = []
+        
+        # Define a helper function to process a single component
+        def process_component(comp):
+            comp_name = self._get_component_name(comp, component_type)
+            self.logger.log(f"Thread analyzing {component_type}: {comp_name}")
+            try:
+                # Call the existing first_pass_analyze_component method
+                analyzed_comp = self.first_pass_analyze_component(comp, component_type)
+                return analyzed_comp
+            except Exception as e:
+                self.logger.log(f"Error in parallel analysis of {comp_name}: {str(e)}")
+                # Return the original component if analysis fails
+                return comp
+        
+        # Use ThreadPoolExecutor for parallelization
+        # ThreadPoolExecutor is appropriate because the tasks are I/O bound (API calls)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all components for processing
+            future_to_comp = {executor.submit(process_component, comp): comp for comp in components}
+            
+            # Collect results as they complete
+            for future in concurrent.futures.as_completed(future_to_comp):
+                try:
+                    analyzed_comp = future.result()
+                    analyzed_components.append(analyzed_comp)
+                    # Log progress periodically
+                    if len(analyzed_components) % 5 == 0:
+                        self.logger.log(f"Parallel analysis progress: {len(analyzed_components)}/{len(components)} {component_type} completed")
+                except Exception as e:
+                    comp = future_to_comp[future]
+                    comp_name = self._get_component_name(comp, component_type)
+                    self.logger.log(f"Exception in parallel analysis for {comp_name}: {str(e)}")
+                    # Add the original component to maintain component count
+                    analyzed_components.append(comp)
+        
+        self.logger.log(f"Completed parallel first pass analysis for {len(analyzed_components)}/{len(components)} {component_type}")
+        return analyzed_components
+    
+    
     #~ FUNCTION TO PROCESS AND ANALYZE JAVA CODE(NO AMBIGUITY, FULLY FUNCTIONAL, 1 ALERT CHANGE REQUIRED)
     def process_and_analyze(self, java_file_path: str):
         """
@@ -996,19 +1091,19 @@ class JavaCodeAnalyzer:
             })
 
             #*Step 3: Analyze components
-            self.logger.log("Step 3: Performing first pass analysis...")
-            print("Performing first pass analysis...")
+            self.logger.log("Step 3: Performing first pass analysis in parallel...")
+            print("Performing first pass analysis in parallel...")
             for comp_type in analyzed_components.keys():
                 components = extracted_components.get(comp_type, [])
-                self.logger.log(f"Processing {len(components)} {comp_type}")
+                if not components:
+                    self.logger.log(f"No {comp_type} to process")
+                    continue
+                    
+                self.logger.log(f"Processing {len(components)} {comp_type} in parallel")
                 
-                for comp in components:
-                    #*First pass analysis
-                    comp_name = self._get_component_name(comp, comp_type)
-                    self.logger.log(f"Analyzing {comp_type}: {comp_name}")
-                    analyzed_comp = self.first_pass_analyze_component(comp, comp_type)
-                    #*Add the component with first pass analysis
-                    analyzed_components[comp_type].append(analyzed_comp)
+                # Use the parallel analysis method
+                analyzed_comps = self.parallelize_first_pass(components, comp_type)
+                analyzed_components[comp_type] = analyzed_comps
             
             #*Update all_components with first pass results
             self.all_components = analyzed_components
