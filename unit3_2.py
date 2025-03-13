@@ -9,7 +9,7 @@ import re
 import traceback
 import datetime
 from unit1 import JavaSyntaxFixer
-from unit2 import JavaCodeExtractor as JsonExtractor
+from unit2_1 import JavaCodeExtractor as JsonExtractor
 import concurrent.futures
 import multiprocessing
 from typing import List, Dict, Any
@@ -1155,9 +1155,9 @@ class JavaCodeAnalyzer:
 if __name__ == "__main__":
     analyzer = JavaCodeAnalyzer(
         model_name="llama-3.3-70b-versatile",
-        api_key="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"
+        api_key="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"
     )
-    java_file_path = 'code.java'
+    java_file_path = 'TestJavaCode.java'
     
     #*Process and analyze (this creates the PKL file)
     analyzed_components = analyzer.process_and_analyze(java_file_path)
