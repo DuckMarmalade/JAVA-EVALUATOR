@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 3 (Using Direct Adjacency List Approach):
+
+"Feedback with marks"  
+1. Create an adjacency list where each node represents a string, and edges represent the possibility of chaining two strings. [1 mark]  
+   - The solution does not explicitly create an adjacency list. Instead, it uses a recursive approach to check chaining possibilities. This does not satisfy the rubric point. [0 marks]
+
+2. For each string, identify all other strings that can be chained after it (last char of current = first char of next). [1 mark]  
+   - The solution iterates through the strings and checks if the current string can be chained with the previous one by comparing the last character of the previous string with the first character of the current string. This satisfies the rubric point. [1 mark]
+
+3. Check if each string can be chained with exactly two other strings (one before and one after). [1 mark]  
+   - The solution does not explicitly check if each string can be chained with exactly two other strings. It focuses on checking if the strings can form a circle, but not on the exact chaining count. [0 marks]
+
+4. Verify that these chains form a single cycle containing all strings (by traversing the adjacency list). [1 mark]  
+   - The solution uses a recursive function to check if the strings can form a circle, which indirectly verifies the formation of a single cycle. However, it does not use an adjacency list traversal. [0 marks]
+
+"Marks Scored out of total marks"  
+1 out of 4 marks

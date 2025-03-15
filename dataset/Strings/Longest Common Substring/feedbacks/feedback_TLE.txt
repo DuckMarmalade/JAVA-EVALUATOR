@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 4: Recursive Approach with LCSuffix Helper
+
+"Feedback with marks"  
+1. Implement a helper function to find the longest common suffix for given ending positions. [1 mark]  
+   - The function `lcs_rec` is implemented to find the longest common suffix for given positions. [1 mark]
+
+2. If the characters at given positions match, recursively call the helper with positions decremented by 1 and add 1 to the result. [1 mark]  
+   - The code correctly checks if characters match and recursively calls `lcs_rec` with incremented positions, adding 1 to the result. [1 mark]
+
+3. If characters don't match, return 0. [1 mark]  
+   - The code returns 0 when characters don't match, as seen in the `else` block of the `lcs` function. [1 mark]
+
+4. Call this helper function for all possible ending positions and return the maximum value found. [1 mark]  
+   - The helper function `lcs_rec` is called from `longestCommonSubstr`, and the maximum value is tracked using the `ans` variable. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

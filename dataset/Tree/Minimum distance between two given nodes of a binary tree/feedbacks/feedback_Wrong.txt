@@ -1,0 +1,29 @@
+"Selected rubric"  
+Solution 3: Using LCA (One Pass) – O(n) Time and O(h) Space
+
+"Feedback with marks"  
+1. Handle null check: return [0,0] if root is null [0 marks]  
+   - The code returns -1 for null, which does not match the rubric requirement of returning [0,0].  
+2. Recursively calculate distance in left and right subtrees [1 mark]  
+   - The code correctly calculates distances in left and right subtrees using recursion.  
+3. Check if current node is one of the target nodes [1 mark]  
+   - The code checks if the current node is one of the target nodes with `if(a == root.data || b == root.data)`.  
+4. Update distance when current node is target and other node found in subtree [0 marks]  
+   - The code does not explicitly update the distance when the current node is a target and the other node is found in a subtree.  
+5. Detect LCA when both target nodes are found in different subtrees [1 mark]  
+   - The code correctly detects the LCA when both target nodes are found in different subtrees with `if(le != -1 && ri != -1)`.  
+6. Update distance when LCA is found [1 mark]  
+   - The code updates the distance when the LCA is found with `dis = le+ri;`.  
+7. Track node existence and increment distance appropriately [1 mark]  
+   - The code tracks node existence and increments distance appropriately with `return le+1;` and `return ri+1;`.  
+8. Return status and current distance for parent nodes [0 marks]  
+   - The code does not return status and current distance for parent nodes as expected in the rubric.  
+9. Initialize distance array [0 marks]  
+   - The code does not initialize a distance array as expected in the rubric.  
+10. Call the helper function to calculate distance [1 mark]  
+    - The code calls the helper function `lca(root,a,b);` to calculate distance.  
+11. Return the final calculated distance [2 marks]  
+    - The code returns the final calculated distance with `return dis;`.  
+
+"Marks Scored out of total marks"  
+8 out of 12 marks

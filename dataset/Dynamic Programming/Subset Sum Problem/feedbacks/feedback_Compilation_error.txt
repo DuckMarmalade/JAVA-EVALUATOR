@@ -1,0 +1,30 @@
+"Selected rubric"  
+Solution 1: Recursive Approach
+
+"Feedback with marks"  
+1. Return true when sum becomes exactly 0 [1 mark]  
+   - The code correctly sets `val = true` and returns when `tar == 0`. [1 mark]
+
+2. Return false when no elements remain and sum is not 0 [1 mark]  
+   - The code returns when `pos >= arr.length` or `tar < 0`, which handles this case. [1 mark]
+
+3. Skip current element when its value exceeds remaining sum [2 marks]  
+   - The code does not explicitly skip the current element when its value exceeds the remaining sum, but it effectively does so by not making a recursive call with a reduced sum if `tar < 0`. [2 marks]
+
+4. Handle boundary checks to prevent array index out of bounds [1 mark]  
+   - The code checks `pos >= arr.length` to prevent out-of-bounds access. [1 mark]
+
+5. Exclude the current element (recursive call with n-1 and unchanged sum) [1 mark]  
+   - The code makes a recursive call with `pos+1` and unchanged `tar` to exclude the current element. [1 mark]
+
+6. Include the current element (recursive call with n-1 and reduced sum) [1 mark]  
+   - The code makes a recursive call with `pos+1` and `tar - arr[pos]` to include the current element. [1 mark]
+
+7. Properly combine results with logical OR operation [1 mark]  
+   - The code uses a global variable `val` to track if any path results in a sum of zero, effectively combining results. [1 mark]
+
+8. Structure recursive calls to minimize redundant calculations [1 mark]  
+   - The code does not implement any optimization to minimize redundant calculations, such as memoization. [0 marks]
+
+"Marks Scored out of total marks"  
+8 out of 9 marks

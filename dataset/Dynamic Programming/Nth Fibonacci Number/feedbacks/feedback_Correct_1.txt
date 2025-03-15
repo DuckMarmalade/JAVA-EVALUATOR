@@ -1,0 +1,15 @@
+"Selected rubric"  
+Solution 1 (Naive Approach - Recursion)
+
+"Feedback with marks"  
+1. Implement base cases: if n ≤ 1, return n. [1 mark]  
+   - The base cases are correctly implemented with `if(n == 0 || n == 1) { return n; }`. [1 mark]
+
+2. For n > 1, recursively calculate F(n) = F(n-1) + F(n-2). [2 marks]  
+   - The recursive calculation is correctly implemented with `return nthFibonacci(n-1) + nthFibonacci(n-2);`. [2 marks]
+
+3. Return the final result for the nth Fibonacci number. [1 mark]  
+   - The function correctly returns the final result for the nth Fibonacci number. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

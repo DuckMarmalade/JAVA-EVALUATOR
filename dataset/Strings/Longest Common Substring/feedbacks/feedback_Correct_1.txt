@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 3: Space-Optimized DP Approach
+
+"Feedback with marks"  
+1. Create two 1D arrays (current and previous) of size n+1 instead of using the full 2D table. [1 mark]  
+   - The student correctly created two 1D arrays `prev` and `curr` of size `m+1`. [1 mark]
+
+2. Initialize all values in both arrays to 0. [1 mark]  
+   - The student correctly initialized both arrays to 0. [1 mark]
+
+3. For each row in the virtual 2D table, update the current array based on the previous array's values and the current character comparison. [1 mark]  
+   - The student correctly updated the `curr` array based on the `prev` array and character comparison. [1 mark]
+
+4. After processing each row, swap the current and previous arrays to reuse space. [1 mark]  
+   - The student correctly swapped the `curr` and `prev` arrays by cloning `curr` into `prev`. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

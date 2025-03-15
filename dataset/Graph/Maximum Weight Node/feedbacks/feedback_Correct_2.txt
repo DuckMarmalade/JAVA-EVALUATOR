@@ -1,0 +1,22 @@
+"Selected rubric"  
+Solution 1: Direct Weight Calculation
+
+"Feedback with marks"  
+1. Create an array of size n to store the weight of each cell. Initialize all elements to 0. [1 mark]  
+   - The student created a `weights` array of size `exits.length` and initialized it to 0.  
+   - Marks: 1
+
+2. Iterate through the exits array. For each cell i, if the exit is not -1, increment the weight of the cell that i exits to by i. [1 mark]  
+   - The student iterated through the `exits` array and correctly incremented the weight of the exit cell by `i` if `exits[i]` is not -1.  
+   - Marks: 1
+
+3. Find the cell with the maximum weight. If multiple cells have the same maximum weight, return the one with the highest index. [1 mark]  
+   - The student iterated through the `weights` array to find the cell with the maximum weight, using `>=` to ensure the highest index is chosen in case of a tie.  
+   - Marks: 1
+
+4. Handle the edge case where no cell has weight greater than 0. [1 mark]  
+   - The student's solution inherently handles this case by returning the highest index with the maximum weight, which would be 0 if all weights are 0.  
+   - Marks: 1
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

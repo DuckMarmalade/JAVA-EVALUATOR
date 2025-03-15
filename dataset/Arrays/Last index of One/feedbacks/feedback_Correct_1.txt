@@ -1,0 +1,11 @@
+"Selected rubric"  
+Solution 1: Backward Traversal
+
+"Feedback with marks"  
+1. Understand that we need to find the index of the last occurrence of '1' in the string [1 mark] - The student correctly identifies the task of finding the last occurrence of '1'.
+2. Traverse the string from the end toward the beginning (right to left) [1 mark] - The student correctly traverses the string from the end to the beginning.
+3. Return the index of the first occurrence of '1' encountered during this backward traversal [1 mark] - The student correctly returns the index of the first '1' encountered during the backward traversal.
+4. Return -1 if no '1' is found in the string [1 mark] - The student correctly returns -1 if no '1' is found.
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

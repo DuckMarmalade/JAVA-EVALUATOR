@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1: DFS with Recursion Stack
+
+"Feedback with marks"  
+1. Initialize a visited array and a recursion stack array, both of size V to keep track of visited vertices and vertices in the current path. [0 mark]  
+   - Feedback: The solution initializes a `path` array to keep track of the current path, but it does not explicitly initialize a separate visited array. The `path` array is used for both purposes, which is not exactly as per the rubric.
+
+2. Mark the current vertex as visited and also mark it in the recursion stack during DFS traversal. [1 mark]  
+   - Feedback: The solution correctly marks the current vertex in the `path` array during DFS traversal.
+
+3. For each adjacent unvisited vertex, recursively call the DFS function. If a vertex is reached that is already in the recursion stack, return true (cycle detected). [1 mark]  
+   - Feedback: The solution correctly checks if a vertex is already in the `path` array and sets `bool[0]` to 1 if a cycle is detected.
+
+4. Implement a wrapper function that calls DFS for all unvisited vertices and returns the final result correctly. [0 mark]  
+   - Feedback: The solution does not correctly implement a wrapper function to call DFS only for unvisited vertices. It calls DFS for all vertices without checking if they are unvisited, which is not as per the rubric.
+
+"Marks Scored out of total marks"  
+2 out of 4 marks

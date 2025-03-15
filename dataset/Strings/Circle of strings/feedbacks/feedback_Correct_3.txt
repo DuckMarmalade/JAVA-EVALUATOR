@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 2 (Using Character Frequency Counting)
+
+"Feedback with marks"  
+1. Count the frequency of each character appearing at the beginning and at the end of all strings. [1 mark]  
+   - The solution correctly counts the frequency of each character at the beginning and end of the strings using `inDegree` and `outDegree` arrays. [1 mark]
+
+2. For each unique character, check if its frequency at the beginning of strings equals its frequency at the end of strings. [1 mark]  
+   - The solution checks if the in-degree and out-degree are equal for each character using the `allDegreesEqual` method. [1 mark]
+
+3. Ensure that the graph formed by the strings is connected (can be checked by constructing an adjacency list and performing DFS). [1 mark]  
+   - The solution constructs an adjacency list using a map and checks connectivity using a BFS traversal in the `bfs` method. [1 mark]
+
+4. Return true if both conditions are met (balanced frequencies and connected graph), otherwise return false. [1 mark]  
+   - The solution returns 1 if both conditions are met and 0 otherwise, which aligns with the requirement. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

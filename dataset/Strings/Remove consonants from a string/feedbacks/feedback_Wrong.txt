@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 2: Direct Character-by-Character Iteration
+
+"Feedback with marks"  
+1. Initialize an empty result string to store vowels [1 mark]  
+   - The student uses a `StringBuilder` to store vowels, which is an acceptable approach. [1 mark]
+
+2. Iterate through each character in the input string [1 mark]  
+   - The student iterates through each character using a for loop. [1 mark]
+
+3. For each character, directly check if it is one of the vowels (both lowercase and uppercase) using a compound condition [1 mark]  
+   - The student uses a compound condition to check for vowels. [1 mark]
+
+4. If a character is a vowel, append it to the result string [1 mark]  
+   - The student appends vowels to the `StringBuilder`. [1 mark]
+
+5. After iteration, check if the result string is empty, if yes, return "No Vowel" [1 mark]  
+   - The student does not explicitly check if the result is empty and return "No Vowel". This step is missing. [0 mark]
+
+"Marks Scored out of total marks"  
+4 out of 5 marks

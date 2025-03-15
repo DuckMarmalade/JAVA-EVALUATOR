@@ -1,0 +1,19 @@
+"Selected rubric"  
+Solution 1: Min-Max Range Approach
+
+"Feedback with marks"  
+1. Create a helper function that takes a node, minimum value, and maximum value as parameters [0 mark]  
+   - The student's solution does not implement a helper function with min and max parameters.  
+2. Return true if the node is null (base case) [1 mark]  
+   - The solution correctly returns true if the root is null.  
+3. Check if current node's value violates the valid range (< min or > max); if so, return false [0 mark]  
+   - The solution does not check for violations using a min-max range.  
+4. Recursively validate left subtree with updated maximum as current node's value [0 mark]  
+   - The solution does not update the maximum value when validating the left subtree.  
+5. Recursively validate right subtree with updated minimum as current node's value [0 mark]  
+   - The solution does not update the minimum value when validating the right subtree.  
+6. Return true only if both left and right subtrees are valid BSTs [1 mark]  
+   - The solution correctly returns true only if both left and right subtrees are valid.
+
+"Marks Scored out of total marks"  
+2 out of 6 marks

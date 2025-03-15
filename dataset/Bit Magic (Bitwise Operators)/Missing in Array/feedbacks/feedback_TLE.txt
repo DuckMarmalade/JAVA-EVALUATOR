@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 5: Linear Search Approach
+
+"Feedback with marks"  
+1. Create a boolean array or hash set to mark present elements [0 marks]  
+   - The student used an `ArrayList` to store elements instead of a boolean array or hash set. This does not meet the rubric criteria.
+
+2. Iterate through the input array and mark each element as present [1 mark]  
+   - The student iterated through the input array and added each element to the `ArrayList`, which is equivalent to marking them as present.
+
+3. Scan through the boolean array or hash set to find the first unmarked element [0 marks]  
+   - The student used a loop to check for the missing element, but since they did not use a boolean array or hash set, this does not meet the rubric criteria.
+
+4. Return the missing number correctly [1 mark]  
+   - The student correctly identified and returned the missing number by checking which number from 1 to n is not present in the list.
+
+"Marks Scored out of total marks"  
+2 out of 4 marks

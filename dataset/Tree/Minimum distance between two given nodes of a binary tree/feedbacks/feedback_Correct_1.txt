@@ -1,0 +1,19 @@
+"Selected rubric"  
+Solution 2: Using LCA – O(n) Time and O(h) Space
+
+"Feedback with marks"  
+1. Handle null check and target node checks for LCA [1 mark] - The code correctly handles null checks and target node checks in the `lca` method. [1 mark]  
+2. Recursively search left and right subtrees for LCA [1 mark] - The code correctly searches both left and right subtrees in the `lca` method. [1 mark]  
+3. Determine LCA based on search results [1 mark] - The code correctly determines the LCA when both left and right are non-null. [1 mark]  
+4. Return appropriate node [1 mark] - The code returns the correct node based on the search results. [1 mark]  
+5. Handle null check: return -1 if root is null for level finding [1 mark] - The code does not return -1 for null in `distanceBetweenTwoNodes`, it returns 0 instead. [0 marks]  
+6. Return level if root.data equals target value [1 mark] - The code correctly returns the distance when the target node is found. [1 mark]  
+7. Recursively search left and right subtrees, incrementing level [1 mark] - The code correctly searches left and right subtrees, incrementing the distance. [1 mark]  
+8. Return appropriate level or -1 based on search results [1 mark] - The code returns the correct distance or 0 if not found. [1 mark]  
+9. Find the LCA of the two nodes [1 mark] - The code correctly finds the LCA using the `lca` method. [1 mark]  
+10. Calculate distance from LCA to first node [1 mark] - The code correctly calculates the distance from LCA to the first node. [1 mark]  
+11. Calculate distance from LCA to second node [1 mark] - The code correctly calculates the distance from LCA to the second node. [1 mark]  
+12. Return the sum of these distances [1 mark] - The code correctly returns the sum of the distances. [1 mark]  
+
+"Marks Scored out of total marks"  
+11 out of 12 marks

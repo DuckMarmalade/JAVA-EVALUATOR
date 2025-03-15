@@ -1,0 +1,17 @@
+"Selected rubric"  
+Solution 2: Brute Force Approach
+
+"Feedback with marks"  
+1. Correctly sets up nested loops to examine all subarrays of size k [0 marks]  
+   - The student's solution does not use nested loops to examine subarrays. Instead, it sorts the array and selects the largest k elements, which does not align with the brute force approach.
+2. Properly calculates product of each subarray by multiplying all elements [0 marks]  
+   - The solution does not calculate the product of subarrays of size k. It calculates the product of the largest k elements after sorting, which is not the same.
+3. Maintains and updates the maximum product found across all subarrays [0 marks]  
+   - The solution does not maintain or update a maximum product across subarrays, as it does not iterate over subarrays.
+4. Handles edge cases such as when array length is less than k [0 marks]  
+   - The solution does not handle the case where the array length is less than k, which would result in an error.
+5. Analyzes time complexity as O(n*k) and space complexity as O(1) [0 marks]  
+   - The solution does not analyze time complexity, and the approach used (sorting) has a time complexity of O(n log n), not O(n*k).
+
+"Marks Scored out of total marks"  
+0 out of 5 marks

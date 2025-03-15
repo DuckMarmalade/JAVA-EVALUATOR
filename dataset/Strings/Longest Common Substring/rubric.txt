@@ -1,0 +1,25 @@
+Longest Common Substring
+
+Solution 1: Naive Iterative Approach
+1.Initialize a variable to track the maximum length found so far. [1 mark]
+2.Implement nested loops to consider all possible starting positions in both strings. [1 mark]
+3.For each pair of starting positions, check how many consecutive characters match. [1 mark]
+4.Update the maximum length if the current matching substring is longer than previously found. [1 mark]
+
+Solution 2: Dynamic Programming Approach
+1. Create a 2D DP table of size (m+1) × (n+1) to store the length of common suffixes ending at each position. [1 mark]
+2. Initialize all values in the table to 0. [1 mark]
+3. Fill the table in a bottom-up manner: if characters match, add 1 to the diagonal value, otherwise set to 0. [1 mark]
+4. Keep track of the maximum value encountered in the table and return it as the result. [1 mark]
+
+Solution 3: Space-Optimized DP Approach
+1. Create two 1D arrays (current and previous) of size n+1 instead of using the full 2D table. [1 mark]
+2. Initialize all values in both arrays to 0. [1 mark]
+3. For each row in the virtual 2D table, update the current array based on the previous array's values and the current character comparison. [1 mark]
+4. After processing each row, swap the current and previous arrays to reuse space. [1 mark]
+
+Solution 4: Recursive Approach with LCSuffix Helper
+1. Implement a helper function to find the longest common suffix for given ending positions. [1 mark]
+2. If the characters at given positions match, recursively call the helper with positions decremented by 1 and add 1 to the result. [1 mark]
+3. If characters don't match, return 0. [1 mark]
+4. Call this helper function for all possible ending positions and return the maximum value found. [1 mark]

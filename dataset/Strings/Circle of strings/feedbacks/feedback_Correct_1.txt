@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1 (Using Graph and Eulerian Circuit)
+
+"Feedback with marks"  
+1. Create a directed graph where each vertex represents a character (first and last characters of the strings). [1 mark]  
+   - The solution creates a list of lists to represent the graph, where each index corresponds to a character. This satisfies the rubric point. [1 mark]
+
+2. For each string in the array, add a directed edge from the first character to the last character of the string. [1 mark]  
+   - The solution iterates over each string and adds a directed edge from the first character to the last character using the adjacency list. This is correctly implemented. [1 mark]
+
+3. Check if every vertex in the graph has equal in-degree and out-degree (necessary condition for Eulerian circuit). [1 mark]  
+   - The solution checks if each vertex has an even degree, which implies equal in-degree and out-degree for the Eulerian circuit. This is correctly implemented. [1 mark]
+
+4. Verify that all non-zero degree vertices form a single strongly connected component (using DFS or similar algorithm). [1 mark]  
+   - The solution uses a DFS approach to check if all non-zero degree vertices are visited, ensuring they form a single strongly connected component. This is correctly implemented. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1: DFS with Recursion Stack
+
+"Feedback with marks"  
+1. Initialize a visited array and a recursion stack array, both of size V to keep track of visited vertices and vertices in the current path. [1 mark]  
+   - The student has correctly initialized the `visited` and `current_path` arrays of size `n` to keep track of visited vertices and vertices in the current path. [1 mark]
+
+2. Mark the current vertex as visited and also mark it in the recursion stack during DFS traversal. [1 mark]  
+   - The student correctly marks the current vertex as visited and also marks it in the recursion stack (`current_path`) during DFS traversal. [1 mark]
+
+3. For each adjacent unvisited vertex, recursively call the DFS function. If a vertex is reached that is already in the recursion stack, return true (cycle detected). [1 mark]  
+   - The student correctly implements the DFS function to recursively call for each unvisited adjacent vertex and checks if a vertex is already in the recursion stack to detect a cycle. [1 mark]
+
+4. Implement a wrapper function that calls DFS for all unvisited vertices and returns the final result correctly. [1 mark]  
+   - The student has implemented the `isCyclic` function as a wrapper that calls DFS for all unvisited vertices and returns the correct result. However, there is a minor error in the code: `current_path[node] = 0;` is misplaced and should be inside the DFS function after the loop to correctly reset the recursion stack. Despite this, the overall logic is correct. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

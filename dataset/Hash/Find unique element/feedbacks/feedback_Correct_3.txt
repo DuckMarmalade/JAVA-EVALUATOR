@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 2: using sorting
+
+"Feedback with marks"  
+1. Arrange the elements in ascending order so that duplicate elements appear consecutively. [1 mark]  
+   - The student used `Arrays.sort(arr);` to sort the array, which arranges elements in ascending order. [1 mark]
+
+2. Move through the array in increments of k to check for groups of duplicate elements. [1 mark]  
+   - The student iterated through the array in steps of `k` using `for (int i = 0; i < n; i += k)`. [1 mark]
+
+3. Compare the current element with the next element. If they are not the same, the current element is unique. [1 mark]  
+   - The student correctly compared `arr[i]` with `arr[i + 1]` to find the unique element. [1 mark]
+
+4. If a unique element is found, return it as the result. [1 mark]  
+   - The student returned `arr[i]` when a unique element was found. [1 mark]
+
+5. If no unique element is found after iterating through the array, return a default value (e.g., -1). [1 mark]  
+   - The student returned `-1` if no unique element was found. [1 mark]
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

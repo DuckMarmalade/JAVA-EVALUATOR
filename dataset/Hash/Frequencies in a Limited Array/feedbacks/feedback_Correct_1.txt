@@ -1,0 +1,22 @@
+"Selected rubric"  
+Solution 3: Using a hash map
+
+"Feedback with marks"  
+1. Initialize an empty hash map to store the frequency of each element. [1 mark]  
+   - The student correctly initializes a `HashMap` to store frequencies.  
+   - Marks: 1/1
+
+2. Traverse the input array and increment the count of each element in the hash map. [1 mark]  
+   - The student correctly traverses the array and updates the hash map with frequencies.  
+   - Marks: 1/1
+
+3. Initialize a result array of size n with all zeros. [1 mark]  
+   - The student initializes a `List<Integer>` named `counts` but does not explicitly initialize it with zeros. However, the logic of adding zeros for missing elements is correctly implemented in the next step.  
+   - Marks: 1/1
+
+4. For each possible number from 1 to n, update the result array with the corresponding frequency from the hash map (0 if not present). [1 mark]  
+   - The student correctly iterates from 1 to n and updates the `counts` list with the frequency from the hash map or 0 if not present.  
+   - Marks: 1/1
+
+"Marks Scored out of total marks"  
+4/4

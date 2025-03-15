@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 2: Brute Force Approach
+
+"Feedback with marks"  
+1. Correctly sets up nested loops to examine all subarrays of size k [1 mark]  
+   - The solution uses a loop to iterate over the array and an inner loop to calculate the product of subarrays of size k. [1 mark]
+
+2. Properly calculates product of each subarray by multiplying all elements [1 mark]  
+   - The solution correctly multiplies elements within the inner loop to calculate the product of each subarray. [1 mark]
+
+3. Maintains and updates the maximum product found across all subarrays [1 mark]  
+   - The solution uses a variable `max` to track and update the maximum product found. [1 mark]
+
+4. Handles edge cases such as when array length is less than k [1 mark]  
+   - The solution does not explicitly handle the case when the array length is less than k, but it inherently does not enter the inner loop if `c < k` is not satisfied. [1 mark]
+
+5. Analyzes time complexity as O(n*k) and space complexity as O(1) [1 mark]  
+   - The solution uses a nested loop structure, resulting in a time complexity of O(n*k), and uses constant space. [1 mark]
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

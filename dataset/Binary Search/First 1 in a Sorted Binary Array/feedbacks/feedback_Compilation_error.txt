@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 1: Binary Search Approach
+
+"Feedback with marks"  
+1. Initialize pointers to track the search range [1 mark]  
+   - The student correctly initializes `low` and `high` pointers. [1 mark]
+
+2. Implement a binary search loop with proper termination conditions [1 mark]  
+   - The student does not implement a loop for binary search; the code only checks the condition once. [0 marks]
+
+3. Check if the current element is the first occurrence of 1 with appropriate boundary checks [2 marks]  
+   - The student checks if `arr[mid] == 1` and updates `result`, but does not ensure it is the first occurrence. [0 marks]
+
+4. Correctly adjust search range based on comparison results [2 marks]  
+   - The student adjusts `low` and `high` based on the comparison, but without a loop, this is ineffective. [0 marks]
+
+5. Return appropriate value when no match is found [1 mark]  
+   - The student returns `result`, which is initialized to `-1`, correctly handling the case when no 1 is found. [1 mark]
+
+"Marks Scored out of total marks"  
+2 out of 7 marks

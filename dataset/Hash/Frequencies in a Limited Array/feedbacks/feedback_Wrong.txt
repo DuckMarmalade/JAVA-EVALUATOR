@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 3: Using a hash map
+
+"Feedback with marks"  
+1. Initialize an empty hash map to store the frequency of each element. [1 mark]  
+   - The solution correctly initializes a `LinkedHashMap` to store frequencies. [1 mark]
+
+2. Traverse the input array and increment the count of each element in the hash map. [1 mark]  
+   - The solution correctly traverses the array and updates the frequency count in the map. [1 mark]
+
+3. Initialize a result array of size n with all zeros. [1 mark]  
+   - The solution does not initialize a result array of size n with all zeros. Instead, it initializes an empty `ArrayList`. [0 marks]
+
+4. For each possible number from 1 to n, update the result array with the corresponding frequency from the hash map (0 if not present). [1 mark]  
+   - The solution does not correctly update the result array for each number from 1 to n. It only adds frequencies of numbers present in the input array, not considering numbers that are absent. [0 marks]
+
+"Marks Scored out of total marks"  
+2 out of 4 marks

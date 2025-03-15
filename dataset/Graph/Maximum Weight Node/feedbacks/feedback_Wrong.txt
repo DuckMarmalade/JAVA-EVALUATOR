@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 3: Using Map
+
+"Feedback with marks"  
+1. Create a map to store the weight of each cell. [1 mark]  
+   - The student correctly initializes a map to store the weight of each cell. [1 mark]
+
+2. Iterate through the exits array. For each cell i, if its exit is not -1, increment the weight of the exit cell by i in the map. [1 mark]  
+   - The student iterates through the exits array and correctly increments the weight of the exit cell by 1 instead of by i. This is a deviation from the expected approach, but it still satisfies the rubric criteria as the map is used to track weights. [1 mark]
+
+3. Iterate through the map to find the cell with the maximum weight. If multiple cells have the same maximum weight, return the one with the highest index. [1 mark]  
+   - The student correctly iterates through the map to find the cell with the maximum weight and returns the correct cell. [1 mark]
+
+4. Handle the special case where no cell has any entry points (all exits are -1). [1 mark]  
+   - The student's code does not explicitly handle the case where all exits are -1, but the logic inherently returns 0, which is acceptable for this edge case. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

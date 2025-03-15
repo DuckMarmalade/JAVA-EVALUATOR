@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 3: Using hashing
+
+"Feedback with marks"  
+1. Initialize a HashMap to keep track of how many times each element appears in the array. [0 mark]  
+   - The student used an ArrayList instead of a HashMap to track frequencies, which does not satisfy this rubric point.
+
+2. Iterate through the array and update the frequency of each element in the HashMap. [0 mark]  
+   - The student iterated through the array and added elements to the ArrayList, but did not update frequencies in a HashMap.
+
+3. Check the frequency of each element in the HashMap to identify the one that does not appear a multiple of **k** times. [0 mark]  
+   - The student used `Collections.frequency` to find elements with a frequency of 1, which does not align with checking for non-multiples of **k**.
+
+4. If an element with a frequency that is not a multiple of **k** is found, return it as the unique element. [0 mark]  
+   - The student returned an element with a frequency of 1, which does not necessarily satisfy the condition of not being a multiple of **k**.
+
+5. If no unique element is found after checking all elements, return a default value (e.g., -1). [0 mark]  
+   - The student did not implement a mechanism to return a default value if no unique element is found.
+
+"Marks Scored out of total marks"  
+0 out of 5 marks

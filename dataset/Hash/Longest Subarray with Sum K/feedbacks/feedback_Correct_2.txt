@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 2
+
+"Feedback with marks"  
+1. Initialize a HashMap to store prefix sums as keys and their first occurrence indices as values, along with a result variable (= 0) and a prefixSum variable (= 0). [1 mark]  
+   - The student correctly initializes a HashMap `preSum` to store prefix sums and their first occurrence indices, as well as `maxLength` for the result and `sum` for the prefix sum. [1/1 mark]
+
+2. Iterate through the array once, adding each element to the prefixSum. [1 mark]  
+   - The student iterates through the array and adds each element to `sum`, which is the prefix sum. [1/1 mark]
+
+3. For each position, check if the entire prefix from index 0 to current index has sum equal to k (prefixSum == k). If true, update result to current index + 1. [1 mark]  
+   - The student checks if `sum` equals `k` and updates `maxLength` accordingly. [1/1 mark]
+
+4. Check if (prefixSum - k) exists in the HashMap. If it exists, it means there's a subarray ending at current index with sum k, so update result by taking maximum of current result and (current index - index where (prefixSum - k) was found). [1 mark]  
+   - The student correctly checks if `sum - k` exists in `preSum` and updates `maxLength` if a longer subarray is found. [1/1 mark]
+
+5. Store only the first occurrence of each prefix sum in the HashMap (to maximize subarray length). [1 mark]  
+   - The student ensures that only the first occurrence of each prefix sum is stored in `preSum` by checking if it already contains the sum before adding it. [1/1 mark]
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

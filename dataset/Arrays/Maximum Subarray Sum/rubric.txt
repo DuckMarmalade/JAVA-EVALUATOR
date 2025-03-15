@@ -1,0 +1,22 @@
+Maximum Subarray Sum:
+1. Find the contiguous subarray with the largest sum
+
+2. Solution 1 (Brute Force):
+   1. Initialize a variable to store the maximum sum with minimum possible value. [1 mark]
+   2. Use nested loops to consider every possible subarray. [1 mark]
+   3. For each subarray, calculate its sum and update the maximum sum if the current sum is larger. [1 mark]
+   4. Return the maximum sum after checking all subarrays. [1 mark]
+
+3. Solution 2 (Dynamic Programming - Tabulation):
+   1. Create a DP array of the same size as the input array. [1 mark]
+   2. Initialize the first element of DP array with the first element of input array. [1 mark]
+   3. For each position i in the input array, calculate dp[i] as the maximum of (current element) or (current element + dp[i-1]). [1 mark]
+   4. Return the maximum value in the DP array. [1 mark]
+
+4. Solution 3 (Kadane's Algorithm):
+   1. Set up two variables, one to store the sum of the current subarray and another to store the maximum sum found so far. Initialize the maximum sum variable to the smallest possible value to handle negative numbers.
+   2.At each step, decide whether to start a new subarray from the current element or continue the existing subarray by adding the current element to the current subarray sum.
+   3. After updating the current subarray sum, compare it with the maximum subarray sum and update the maximum sum if the current sum is greater.
+   4. Once the iteration is complete, the maximum subarray sum variable will hold the final result, which should be returned.
+
+

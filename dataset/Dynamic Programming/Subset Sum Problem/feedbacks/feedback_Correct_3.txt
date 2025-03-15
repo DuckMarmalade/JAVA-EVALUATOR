@@ -1,0 +1,23 @@
+"Selected rubric"  
+Solution 3: Bottom-Up DP (Tabulation)
+
+"Feedback with marks"  
+1. Allocate a 2D boolean array of size (n+1)×(sum+1) [1 mark]  
+   - The student allocated a 2D boolean array of size (n)×(target+1), which is slightly different but functionally equivalent. Awarding 1 mark.  
+2. Initialize first column (sum=0) to true for all rows [1 mark]  
+   - The student correctly initialized the first column to true for all rows. Awarding 1 mark.  
+3. Initialize first row appropriately (except dp[0][0]) [1 mark]  
+   - The student initialized the first row correctly by setting dp[0][arr[0]] to true if arr[0] <= target. Awarding 1 mark.  
+4. Process elements in sequence from 1 to n [1 mark]  
+   - The student processed elements in sequence from 1 to n. Awarding 1 mark.  
+5. Evaluate all possible sums from 1 to target sum [1 mark]  
+   - The student evaluated all possible sums from 1 to target. Awarding 1 mark.  
+6. When current element value > current sum: dp[i][j] = dp[i-1][j] [2 marks]  
+   - The student correctly implemented this condition. Awarding 2 marks.  
+7. Otherwise: dp[i][j] = dp[i-1][j] OR dp[i-1][j-arr[i-1]] [2 marks]  
+   - The student correctly implemented this condition. Awarding 2 marks.  
+8. Return the final result from the correct cell dp[n][sum] [1 mark]  
+   - The student returned the final result from dp[n-1][target], which is correct for their implementation. Awarding 1 mark.
+
+"Marks Scored out of total marks"  
+10 out of 10 marks

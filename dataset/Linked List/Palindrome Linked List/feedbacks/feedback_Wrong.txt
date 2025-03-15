@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 3: Optimized Iterative Approach (Two-Pointer)
+
+"Feedback with marks"  
+1. Find the middle of the linked list using slow and fast pointers technique. [1 mark]  
+   - The solution correctly uses slow and fast pointers to find the middle of the linked list. [1 mark]
+
+2. Reverse the second half of the linked list starting from the node after the middle. [1 mark]  
+   - The solution correctly reverses the second half of the linked list using the `reverseList` function. [1 mark]
+
+3. Compare the first half with the reversed second half by traversing both simultaneously and checking if values match. [1 mark]  
+   - The solution correctly compares the first half with the reversed second half. [1 mark]
+
+4. Restore the original list structure by reversing the second half again and reconnecting it to the first half. [1 mark]  
+   - The solution does not restore the original list structure after checking for palindrome. [0 marks]
+
+"Marks Scored out of total marks"  
+3 out of 4 marks

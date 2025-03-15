@@ -1,0 +1,15 @@
+"Selected rubric"  
+Solution 1: Iterative Approach (O(n) Time, O(1) Space)
+
+"Feedback with marks"  
+1. Initialize pointers: prev as NULL, curr as head, and next as NULL. [1 mark]  
+   - The code initializes `prev` as `null` and `cur` as `head`, but the variable `next` is not explicitly initialized as `null`. However, the logic is correct as `next` is used as `front` in the loop. [1 mark]
+
+2. Traverse the linked list, reversing pointers at each step. [2 marks]  
+   - The code correctly traverses the linked list and reverses the pointers using a while loop. However, there is a mistake in the variable names: `prev = temp;` should be `prev = cur;` and `temp = front;` should be `cur = front;`. Despite this, the logic is clear and correct. [2 marks]
+
+3. Update the head pointer to point to the new first node (previously the last node). [1 mark]  
+   - The code returns `prev`, which correctly points to the new head of the reversed list. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

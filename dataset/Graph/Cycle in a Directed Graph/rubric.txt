@@ -1,0 +1,11 @@
+Cycle in a Directed Graph
+Solution 1: DFS with Recursion Stack
+1. Initialize a visited array and a recursion stack array, both of size V to keep track of visited vertices and vertices in the current path. [1 mark]
+2. Mark the current vertex as visited and also mark it in the recursion stack during DFS traversal. [1 mark]
+3. For each adjacent unvisited vertex, recursively call the DFS function. If a vertex is reached that is already in the recursion stack, return true (cycle detected). [1 mark]
+4. Implement a wrapper function that calls DFS for all unvisited vertices and returns the final result correctly. [1 mark]
+Solution 2: Kahn's Algorithm (BFS Topological Sort)
+1. Calculate the in-degree for each vertex in the graph using an array of size V. [1 mark]
+2. Initialize a queue with all vertices having in-degree 0 and maintain a counter for processed vertices. [1 mark]
+3. Perform BFS traversal: for each vertex removed from queue, decrement in-degree of all its neighbors and add vertices with in-degree 0 to the queue. [1 mark]
+4. If the number of processed vertices is less than V, return true (cycle exists); otherwise, return false (no cycle). [1 mark]

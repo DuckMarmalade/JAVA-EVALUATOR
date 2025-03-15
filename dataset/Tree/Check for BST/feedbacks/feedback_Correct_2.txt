@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 2: Inorder Traversal Approach
+
+"Feedback with marks"  
+1. Initialize a variable to track previous node's value [1 mark]  
+   - The student initialized `prev` with `Integer.MIN_VALUE`. [1 mark]
+
+2. Implement inorder traversal (left, root, right) [1 mark]  
+   - The student correctly implemented inorder traversal by recursively calling `isBST` on the left child, processing the current node, and then calling `isBST` on the right child. [1 mark]
+
+3. Check if each node's value is greater than the previous value [1 mark]  
+   - The student checked if `root.data <= prev` and returned false if this condition was met. [1 mark]
+
+4. If any node violates this property, return false [1 mark]  
+   - The student returned false when the current node's value was not greater than `prev`. [1 mark]
+
+5. Return true if the entire traversal completes without finding any violation [1 mark]  
+   - The student returned true if the entire traversal completed without finding any violations. [1 mark]
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

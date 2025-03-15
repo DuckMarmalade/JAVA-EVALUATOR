@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1: Direct Weight Calculation
+
+"Feedback with marks"  
+1. Create an array of size n to store the weight of each cell. Initialize all elements to 0. [1 mark]  
+   - The student correctly initializes an array `weight` of size `n` to store the weights of each cell. [1 mark]
+
+2. Iterate through the exits array. For each cell i, if the exit is not -1, increment the weight of the cell that i exits to by i. [1 mark]  
+   - The student iterates through the `exits` array and correctly increments the weight of the cell that `i` exits to by `i` if the exit is not -1. [1 mark]
+
+3. Find the cell with the maximum weight. If multiple cells have the same maximum weight, return the one with the highest index. [1 mark]  
+   - The student correctly finds the cell with the maximum weight and handles the case where multiple cells have the same maximum weight by returning the one with the highest index. [1 mark]
+
+4. Handle the edge case where no cell has weight greater than 0. [1 mark]  
+   - The student's solution inherently handles the edge case where no cell has weight greater than 0 by initializing `ans` with `-1` values and updating it only when a cell with a non-zero weight is found. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

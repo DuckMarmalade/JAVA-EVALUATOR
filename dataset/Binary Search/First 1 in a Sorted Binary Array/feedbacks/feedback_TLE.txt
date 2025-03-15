@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 3: Alternative Binary Search Implementation
+
+"Feedback with marks"  
+1. Set up tracking variable for potential answer [1 mark]  
+   - The variable `first` is correctly initialized to track the potential answer. [1 mark]
+
+2. Implement binary search with correct loop condition [1 mark]  
+   - The loop condition `while(start<end)` is implemented, but it should be `while(start<=end)` to ensure all elements are checked. [0 marks]
+
+3. Update tracking variable when potential match is found [1 mark]  
+   - The tracking variable `first` is updated when a potential match is found. [1 mark]
+
+4. Correctly narrow search space in each iteration [1 mark]  
+   - The search space is narrowed, but the logic for updating `pivot` and `start`/`end` is incorrect, leading to an infinite loop or incorrect results. [0 marks]
+
+5. Return final result after search completion [1 mark]  
+   - The function returns the variable `first`, which is correct. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 5 marks

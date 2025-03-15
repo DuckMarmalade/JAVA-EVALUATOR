@@ -1,0 +1,20 @@
+Solution 1: Naive Approach
+1. Start the loop from the second element to the second-to-last element. Skip the first and last elements since they cannot trap water. Ensure systematic processing of potential water-trapping positions. [1 mark]
+2. Find the maximum height on the left of the current element. Initialize left with the current element's height. Traverse from start of the array to the current index. Updateleft with the maximum height encountered.
+3. Find the maximum height on the right of the current element. Initialize right with the current element's height. Traverse from current index to end of array. Update right with the maximum height encountered. [1 mark]
+4. Calculate water trapped at the current index. Use the formula: Math.min(left, right) - arr[i]. Determines trapped water based on the shorter of the left and right heights. Subtracts the current element's height to get trapped water. [2 marks]
+5. Ensure that trapped water is non-negative before adding to the result. Prevents incorrect accumulation due to height discrepancies. [1 mark]
+6. Add the calculated trapped water at the current index to res. Continuously updates the total trapped water. Builds a cumulative result throughout the iteration. [1 mark]
+7. Ensure proper handling of empty arrays or arrays with less than 3 elements (should return 0). [1 mark]
+8. Consider cases where all bars are of equal height (should return 0). (1 mark)
+9. Return the total trapped water stored in res. Provides the final computed result for the entire array. [1 mark]
+Solution 2: Using 2 pointers
+1. Set left pointer to start of traversable array (index 1). Set right pointer to end of traversable array (second-to-last element) to Establish boundaries for water trapping calculation [1 mark]
+2. Initialize lMax with height of element just before left pointer. Initialize rMax with height of element just after right pointer. Prepare tracking of maximum heights from both sides [1 mark]
+3. Create res variable to store total trapped water. Initialize res to 0. Prepares accumulator for water trapping calculation [1 mark]
+4. Implement while loop to traverse from both ends. Continue until left and right pointers cross [1 mark]
+5. Check if right maximum is less than or equal to left maximum. Calculate water trapped at right pointer. Use Math.max(0, rMax - arr[right]) to ensure non-negative water. Update right maximum height. [1 mark]
+6. Logic when left maximum is smaller. Calculate water trapped at left pointer. Use Math.max(0, lMax - arr[left]) to ensure non-negative water. Update left maximum height [1 mark]
+7. Move right pointer left when right side is processed. Move left pointer right when left side is processed. Systematically reduce search space. [1 mark]
+8. Ensure loop continues while left <= right. Prevent infinite loops or unnecessary iterations. Provide clean termination condition. [1 mark]
+9. Return total accumulated water [1 mark]

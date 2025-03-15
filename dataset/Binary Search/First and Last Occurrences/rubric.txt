@@ -1,0 +1,31 @@
+First and Last Occurrences in Sorted Array
+Solution 1: Brute Force Approach (Linear Search)
+1. Initialize variables to track first and last occurrences [1 mark]
+2. Correctly traverse the array from left to right [1 mark]
+3. Properly update first occurrence when element is first found [1 mark]
+4. Consistently update last occurrence on each encounter of the target element [1 mark]
+5. Return appropriate result with both occurrences or [-1, -1] if not found [1 mark]
+
+Solution 2: Binary Search Approach
+1. Implement binary search to find first occurrence with proper initialization [1 mark]
+2. Correctly handle mid-point calculation and boundary conditions in first search [1 mark]
+3. Properly narrow search range for first occurrence based on comparison results [2 marks]
+4. Implement binary search to find last occurrence with proper initialization [1 mark]
+5. Correctly handle mid-point calculation and boundary conditions in second search [1 mark]
+6. Properly narrow search range for last occurrence based on comparison results [2 marks]
+7. Return appropriate result vector/array with both occurrences [1 mark]
+
+Solution 3: Using Standard Library Functions
+1. Correctly use lower_bound or equivalent function for first occurrence [1 mark]
+2. Properly calculate index from the iterator/pointer for first occurrence [1 mark]
+3. Correctly use upper_bound or equivalent function for last occurrence [1 mark]
+4. Properly calculate index from the iterator/pointer for last occurrence [1 mark]
+5. Validate if the element exists in the array and return appropriate result [1 mark]
+
+Solution 4: Recursive Binary Search
+1. Correctly define base case for recursion in first occurrence function [1 mark]
+2. Implement recursive logic with proper conditions for first occurrence [2 marks]
+3. Correctly define base case for recursion in last occurrence function [1 mark]
+4. Implement recursive logic with proper conditions for last occurrence [2 marks]
+5. Correctly call recursive functions and handle the results [1 mark]
+6. Return proper result with both occurrences or [-1, -1] if not found [1 mark]

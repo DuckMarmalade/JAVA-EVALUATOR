@@ -1,0 +1,15 @@
+"Selected rubric"  
+Solution 4: Sort and count
+
+"Feedback with marks"  
+1. Sort the input array in ascending order. [0 mark]  
+   - The student's solution does not sort the array.  
+2. Initialize a result array of size n with all zeros. [1 mark]  
+   - The student correctly initializes a result array of size n with all zeros.  
+3. Traverse the sorted array and count consecutive occurrences of each number. [0 mark]  
+   - The student traverses the array and counts occurrences, but the array is not sorted.  
+4. Update the result array with the frequencies of each number from 1 to n. [0 mark]  
+   - The student updates the result array, but due to the lack of sorting, the logic does not align with this rubric point.
+
+"Marks Scored out of total marks"  
+1 out of 4 marks

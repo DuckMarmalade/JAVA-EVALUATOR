@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1 (Brute Force)
+
+"Feedback with marks"  
+1. Initialize a variable to store the maximum sum with minimum possible value. [1 mark]  
+   - The variable `max` is initialized to -1000000000, which is a suitable minimum value. [1 mark]
+
+2. Use nested loops to consider every possible subarray. [1 mark]  
+   - The code uses nested loops with indices `i` and `j` to consider every possible subarray. [1 mark]
+
+3. For each subarray, calculate its sum and update the maximum sum if the current sum is larger. [1 mark]  
+   - The code calculates the sum for each subarray and updates `max` if the current sum is larger. [1 mark]
+
+4. Return the maximum sum after checking all subarrays. [1 mark]  
+   - The code returns the correct maximum sum by comparing `max` and `highest` to handle cases where all elements are negative. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

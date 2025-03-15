@@ -1,0 +1,175 @@
+Given an array arr[] of size n-1 with distinct integers in the range of [1, n]. This array represents a permutation of the integers from 1 to n with one element missing. Find the missing element in the array.
+
+Examples: 
+
+Input: arr[] = [1, 2, 4, 6, 3, 7, 8] 
+Output: 5
+Explanation: Here the size of the array is 7, so the range will be [1, 8]. The missing number between 1 to 8 is 5
+
+
+Input: arr[] = [1, 2, 3, 5]
+Output: 4
+Explanation: Here the size of the array is 4, so the range will be [1, 5]. The missing number between 1 to 5 is 4
+
+
+Try it on GfG Practice
+redirect icon
+Table of Content
+
+[Naive Approach] – O(n^2) Time and O(1) Space
+[Better Approach] – Using Hashing – O(n) Time and O(n) Space
+[Expected Approach-1] – Using Sum of n terms Formula – O(n) Time and O(1) Space
+[Expected Approach-2] Using XOR Operation – O(n) Time and O(1) Space
+[Naive Approach] – O(n^2) Time and O(1) Space
+The idea is to use two nested loops, where the outer one iterate from 1 to n, and inner one iterate for each of the array arr[] elements, if the value in outer loop in not found in array arr[], return the value, else iterate to the next value.
+
+
+
+
+
+// Java program to find the
+// missing number in the array
+class GfG {
+
+    // Function to find the missing number
+    static int missingNumber(int[] nums) {
+        int n = nums.length + 1;
+
+        // Iterate from 1 to n and check
+        // if the current number is present
+        for (int i = 1; i <= n; i++) {
+            boolean found = false;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[j] == i) {
+                    found = true;
+                    break;
+                }
+            }
+
+            // If the current number is not present
+            if (!found)
+                return i;
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 5};
+        System.out.println(missingNumber(arr));
+    }
+}
+
+Output
+4
+[Better Approach] – Using Hashing – O(n) Time and O(n) Space
+The idea is to use an auxiliary array hash[] to store the frequency of each element in the given array arr[]. The number with frequency 0 is the missing number.
+
+
+
+
+
+//java program to find the missing number
+
+class GfG {
+    static int missingNumber(int[] arr) {
+        int n = arr.length + 1;
+
+        // Create hash array of size n+1
+        int[] hash = new int[n + 1];
+
+        // Store frequencies of elements
+        for (int i = 0; i < arr.length; i++) {
+            hash[arr[i]]++;
+        }
+
+        // Find the missing number
+        for (int i = 1; i <= n; i++) {
+            if (hash[i] == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr
+            = { 1, 2, 3, 5 };  
+        int res = missingNumber(arr);
+        System.out.println(res);  
+    }
+}
+
+Output
+4
+[Expected Approach-1] – Using Sum of n terms Formula – O(n) Time and O(1) Space
+The sum of the first n natural numbers is given by the formula (n * (n + 1)) / 2. The idea is to compute this sum and subtract the sum of all elements in the array from it to get the missing number.
+
+
+
+
+
+// Java program to find the missing number  
+
+class GfG {
+
+      static int missingNumber(int[] arr) {
+        int n = arr.length + 1;
+
+        // Calculate the sum of array elements
+        int sum = 0;
+        for (int i = 0; i < n - 1; i++) {
+            sum += arr[i];
+        }
+
+        // Calculate the expected sum
+        int expectedSum = (n * (n + 1)) / 2;
+
+        // Return the missing number
+        return expectedSum - sum;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 3, 5 };
+
+        System.out.println(missingNumber(arr));  
+    }
+}
+
+Output
+4
+[Expected Approach-2] Using XOR Operation – O(n) Time and O(1) Space
+ XOR of a number with itself is 0 i.e. x ^ x = 0 and the given array arr[] has numbers in range [1, n]. This means that the result of XOR of first n natural numbers with the XOR of all the array elements will be the missing number. To do so, calculate XOR of first n natural numbers and XOR of all the array arr[] elements, and then our result will be the XOR of both the resultant values.
+
+
+
+
+
+// Java program to find the missing number 
+
+class GfG {
+      static int missingNumber( int[] arr) {
+        int xor1 = 0, xor2 = 0;
+        int n= arr.length+1;
+
+        // XOR all array elements
+        for (int i = 0; i < n - 1; i++) {
+            xor2 ^= arr[i];
+        }
+
+        // XOR all numbers from 1 to n
+        for (int i = 1; i <= n; i++) {
+            xor1 ^= i;
+        }
+
+        // Missing number is the XOR of xor1 and xor2
+        return xor1 ^ xor2;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 3, 5 };
+        System.out.println(missingNumber(arr));
+    }
+}
+
+Output
+4

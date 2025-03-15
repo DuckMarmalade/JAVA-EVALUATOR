@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 2: Kahn's Algorithm (BFS Topological Sort)
+
+"Feedback with marks"  
+1. Calculate the in-degree for each vertex in the graph using an array of size V. [0 marks]  
+   - The submission does not calculate the in-degree for each vertex, which is a crucial step in Kahn's Algorithm.
+
+2. Initialize a queue with all vertices having in-degree 0 and maintain a counter for processed vertices. [0 marks]  
+   - The submission initializes a queue but does not correctly implement the logic to add vertices with in-degree 0 or maintain a counter for processed vertices.
+
+3. Perform BFS traversal: for each vertex removed from queue, decrement in-degree of all its neighbors and add vertices with in-degree 0 to the queue. [0 marks]  
+   - The submission performs a BFS traversal but does not decrement in-degrees or add vertices with in-degree 0 to the queue, which is essential for detecting cycles using Kahn's Algorithm.
+
+4. If the number of processed vertices is less than V, return true (cycle exists); otherwise, return false (no cycle). [0 marks]  
+   - The submission does not implement the logic to check the number of processed vertices against V to determine the presence of a cycle.
+
+"Marks Scored out of total marks"  
+0 out of 4 marks

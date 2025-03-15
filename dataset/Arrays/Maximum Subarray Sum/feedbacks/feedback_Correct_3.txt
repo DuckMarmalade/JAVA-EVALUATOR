@@ -1,0 +1,22 @@
+"Selected rubric"  
+Solution 3 (Kadane's Algorithm)
+
+"Feedback with marks"  
+1. Set up two variables, one to store the sum of the current subarray and another to store the maximum sum found so far. Initialize the maximum sum variable to the smallest possible value to handle negative numbers. [1 mark]  
+   - The student correctly initializes `sum` and `max` to the first element of the array, which is a valid approach to handle negative numbers.  
+   - Marks: 1
+
+2. At each step, decide whether to start a new subarray from the current element or continue the existing subarray by adding the current element to the current subarray sum. [1 mark]  
+   - The student uses `Math.max(arr[i]+sum, arr[i])` to decide whether to start a new subarray or continue the existing one.  
+   - Marks: 1
+
+3. After updating the current subarray sum, compare it with the maximum subarray sum and update the maximum sum if the current sum is greater. [1 mark]  
+   - The student correctly updates `max` using `Math.max(sum, max)`.  
+   - Marks: 1
+
+4. Once the iteration is complete, the maximum subarray sum variable will hold the final result, which should be returned. [1 mark]  
+   - The student returns `max` after the loop, which is correct.  
+   - Marks: 1
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

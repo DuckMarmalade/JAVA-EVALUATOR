@@ -1,0 +1,15 @@
+"Selected rubric"  
+Solution 4: Binary Search Approach (for sorted array)
+
+"Feedback with marks"  
+1. Check if array is sorted and sort if necessary [1 mark]  
+   - The solution sorts the array using `Arrays.sort(arr);`. This satisfies the requirement. [1 mark]
+
+2. Implement binary search to find the first position where the element value doesn't match its expected position [2 marks]  
+   - The solution uses a linear search instead of a binary search to find the mismatch. This does not satisfy the requirement for binary search. [0 marks]
+
+3. Calculate the missing element based on the discrepancy found [1 mark]  
+   - The solution correctly identifies the missing element by returning `i+1` when `arr[i] != i+1`. [1 mark]
+
+"Marks Scored out of total marks"  
+2 out of 4 marks

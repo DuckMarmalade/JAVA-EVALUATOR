@@ -1,0 +1,25 @@
+Check for BST.
+
+Solution 1: Min-Max Range Approach
+1. Create a helper function that takes a node, minimum value, and maximum value as parameters [1 mark]
+2. Return true if the node is null (base case) [1 mark]
+3. Check if current node's value violates the valid range (< min or > max); if so, return false [1 mark]
+4. Recursively validate left subtree with updated maximum as current node's value [1 mark]
+5. Recursively validate right subtree with updated minimum as current node's value [1 mark]
+6. Return true only if both left and right subtrees are valid BSTs [1 mark]
+
+Solution 2: Inorder Traversal Approach
+1. Initialize a variable to track previous node's value [1 mark]
+2. Implement inorder traversal (left, root, right) [1 mark]
+3. Check if each node's value is greater than the previous value [1 mark]
+4. If any node violates this property, return false [1 mark]
+5. Return true if the entire traversal completes without finding any violation [1 mark]
+
+Solution 3: Morris Traversal (Constant Space)
+1.Start with the root node and traverse the tree while maintaining a pointer to the current node.[1 mark]
+2.For each node, find its inorder predecessor (the rightmost node in its left subtree). Use this node to temporarily link back to the current node. [1 mark]
+3.If the left child exists, create a temporary thread from the inorder predecessor to the current node.[1 mark]
+4.If the left child does not exist, process the current node's data and move to its right child.[1 mark]
+5.Once you visit the current node, restore the tree by removing the temporary thread. Check the inorder property and proceed to the right child.[1 mark]
+6.Compare the current node’s value with the previously visited node’s value.[1 mark]
+7.Continue this process until all nodes are visited. If all nodes satisfy the BST property, then the tree is a BST.[1 mark]

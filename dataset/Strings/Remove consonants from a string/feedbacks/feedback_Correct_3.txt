@@ -1,0 +1,24 @@
+"Selected rubric"  
+Solution 3: Using String Manipulation
+
+"Feedback with marks"  
+1. Create a string containing all vowels (both lowercase and uppercase) [1 mark]  
+   - The solution correctly creates a string `str` containing all vowels "aeiouAEIOU". [1 mark]
+
+2. Initialize an empty result string to store vowels [1 mark]  
+   - The solution initializes a `StringBuilder sb` to store vowels. [1 mark]
+
+3. Iterate through each character in the input string [1 mark]  
+   - The solution iterates through each character in the input string `s` using a for loop. [1 mark]
+
+4. For each character, check if it is present in the vowel string using string's find method or similar [1 mark]  
+   - The solution checks if each character in `s` is present in the vowel string `str` using nested loops. [1 mark]
+
+5. If a character is found in the vowel string, append it to the result string [1 mark]  
+   - The solution appends the character to `sb` if it is found in the vowel string. [1 mark]
+
+6. After iteration, check if the result string is empty, if yes, return "No Vowel" [1 mark]  
+   - The solution checks if `sb` is empty and returns "No Vowel" if true. [1 mark]
+
+"Marks Scored out of total marks"  
+6 out of 6 marks

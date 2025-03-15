@@ -1,0 +1,30 @@
+"Selected rubric"  
+Solution 2: Top-Down DP (Memoization)
+
+"Feedback with marks"  
+1. Initialize a 2D array of size (n+1)×(sum+1) with sentinel values [1 mark]  
+   - The student initializes a 2D array `d` with dimensions [201][40001] and fills it with `Integer.MAX_VALUE`, which serves as a sentinel value. [1 mark]
+
+2. Correctly index the array to match subproblem parameters [1 mark]  
+   - The student correctly uses `d[i][t]` to store results for subproblems, where `i` is the index and `t` is the target sum. [1 mark]
+
+3. Check memo array before computing a subproblem [1 mark]  
+   - The student checks `d[i][t] != Integer.MAX_VALUE` before computing the subproblem, which is correct. [1 mark]
+
+4. Return stored result when available [1 mark]  
+   - The student returns `d[i][t] == 1` when a stored result is available, which is correct. [1 mark]
+
+5. Correctly handle base cases with memoization [1 mark]  
+   - The base cases are handled correctly: `if (t == 0) return true;` and `if (i == 0) return a[i] == t;`. [1 mark]
+
+6. Properly implement the include/exclude choices [2 marks]  
+   - The student correctly implements the include choice with `if (t >= a[i]) y = find(a, i-1, t-a[i], d);` and the exclude choice with `boolean n = find(a, i-1, t, d);`. [2 marks]
+
+7. Store computed results in the memo array at the correct indices [1 mark]  
+   - The student stores the result in `d[i][t]` using `d[i][t] = y || n ? 1 : 0;`, which is correct. [1 mark]
+
+8. Ensure all paths update the memoization table properly before returning [1 mark]  
+   - The memoization table is updated correctly before returning the result. [1 mark]
+
+"Marks Scored out of total marks"  
+9 out of 9 marks

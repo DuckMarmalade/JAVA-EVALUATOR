@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 2: Recursive Approach (O(n) Time, O(n) Space)
+
+"Feedback with marks"  
+1. Handle base case: if head is NULL or head.next is NULL, return head. [1 mark]  
+   - The base case is correctly handled in the `solve` method with the condition `if(head == null || head.next == null) return head;`. [1 mark]
+
+2. Recursively call reverseList on the rest of the list. [1 mark]  
+   - The recursive call is correctly made with `Node newNode = solve(head.next);`. [1 mark]
+
+3. Set head.next.next = head and head.next = NULL to reverse the current node's link. [1 mark]  
+   - The links are correctly reversed with `head.next.next = head;` and `head.next = null;`. [1 mark]
+
+4. Return the new head of the reversed list. [1 mark]  
+   - The new head is correctly returned with `return newNode;`. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

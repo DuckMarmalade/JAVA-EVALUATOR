@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 3: Using hashing
+
+"Feedback with marks"  
+1. Initialize a HashMap to keep track of how many times each element appears in the array. [1 mark]  
+   - The student correctly initializes a HashMap to track the frequency of each element. [1 mark]
+
+2. Iterate through the array and update the frequency of each element in the HashMap. [1 mark]  
+   - The student iterates through the array and updates the frequency of each element in the HashMap using `mpp.put(num, mpp.getOrDefault(num, 0) + 1);`. [1 mark]
+
+3. Check the frequency of each element in the HashMap to identify the one that does not appear a multiple of **k** times. [1 mark]  
+   - The student correctly checks the frequency of each element in the HashMap to find the one that does not appear a multiple of **k** times. [1 mark]
+
+4. If an element with a frequency that is not a multiple of **k** is found, return it as the unique element. [1 mark]  
+   - The student returns the element as soon as it is found to have a frequency not a multiple of **k**. [1 mark]
+
+5. If no unique element is found after checking all elements, return a default value (e.g., -1). [1 mark]  
+   - The student returns -1 if no unique element is found, which matches the rubric requirement. [1 mark]
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

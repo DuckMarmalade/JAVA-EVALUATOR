@@ -1,0 +1,16 @@
+Maximum Weight Node
+Solution 1: Direct Weight Calculation
+1. Create an array of size n to store the weight of each cell. Initialize all elements to 0. [1 mark]
+2. Iterate through the exits array. For each cell i, if the exit is not -1, increment the weight of the cell that i exits to by i. [1 mark]
+3. Find the cell with the maximum weight. If multiple cells have the same maximum weight, return the one with the highest index. [1 mark]
+4. Handle the edge case where no cell has weight greater than 0. [1 mark]
+Solution 2: Using Adjacency List
+1. Create an adjacency list to represent the maze, where each list contains cells that have an exit to the current cell. [1 mark]
+2. Populate the adjacency list by iterating through the exits array. For each cell i, if its exit is not -1, add i to the list of cells pointing to that exit. [1 mark]
+3. Calculate the weight of each cell by summing up the indexes in its adjacency list. [1 mark]
+4. Return the cell with the maximum weight, or if there are multiple such cells, return the one with the highest index. [1 mark]
+Solution 3: Using Map
+1. Create a map to store the weight of each cell. [1 mark]
+2. Iterate through the exits array. For each cell i, if its exit is not -1, increment the weight of the exit cell by i in the map. [1 mark]
+3. Iterate through the map to find the cell with the maximum weight. If multiple cells have the same maximum weight, return the one with the highest index. [1 mark]
+4. Handle the special case where no cell has any entry points (all exits are -1). [1 mark]

@@ -1,0 +1,30 @@
+Find the nth Fibonacci Number:
+
+1. Solution 1 (Naive Approach - Recursion):
+   1. Implement base cases: if n ≤ 1, return n. [1 mark]
+   2. For n > 1, recursively calculate F(n) = F(n-1) + F(n-2). [2 marks]
+   3. Return the final result for the nth Fibonacci number. [1 mark]
+2. Solution 2 (Memoization Approach):
+
+      1. Create a memoization array of size n+1 and initialize all elements to -1. [1 mark]
+      2. Implement base cases: if n ≤ 1, return n. [1 mark]
+      3. Check if the result is already computed in the memoization array; if yes, return the stored value. [1 mark]
+      4. Otherwise, recursively calculate F(n) = F(n-1) + F(n-2) and store the result in the memoization array. [1 mark]
+      5. Return the final result from the memoization array. [1 mark]
+3. Solution 3 (Bottom-Up Approach):
+    1. Create a DP array of size n+1 to store Fibonacci numbers. [1 mark]
+    2. Initialize the base cases: dp[0] = 0, dp[1] = 1. [1 mark]
+    3. Iterate from i = 2 to n, calculating dp[i] = dp[i-1] + dp[i-2]. [1 mark]
+    4. Return dp[n] as the result. [1 mark]
+4. Solution 4 (Space Optimized Approach):
+    1. Handle base cases: if n ≤ 1, return n. [1 mark]
+    2. Initialize variables to track the previous two Fibonacci numbers: prev2 = 0, prev1 = 1. [1 mark]
+    3. Iterate from i = 2 to n, calculating the current Fibonacci number as curr = prev1 + prev2. [1 mark]
+    4. Update prev2 to prev1 and prev1 to curr for the next iteration. [1 mark]
+    5. Return the final curr value as the nth Fibonacci number. [1 mark]
+5. Solution 5 (Matrix Exponentiation):
+    1. Implement a function to multiply two 2x2 matrices. [1 mark]
+    2. Implement a function for matrix exponentiation using the divide-and-conquer approach. [1 mark]
+    3. Initialize the transformation matrix {{1,1},{1,0}}. [1 mark]
+    4. Raise the matrix to the power (n-1) using the matrix exponentiation function. [1 mark]
+    5. Return the element at position [0][0] in the resulting matrix as the nth Fibonacci number. [1 mark]

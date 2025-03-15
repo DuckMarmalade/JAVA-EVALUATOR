@@ -1,0 +1,17 @@
+"Selected rubric"  
+Solution 2: Brute Force Approach
+
+"Feedback with marks"  
+1. Correctly sets up nested loops to examine all subarrays of size k [0 marks]  
+   - The submission does not set up nested loops to examine all subarrays of size k. It directly calculates the product of a specific subarray.
+2. Properly calculates product of each subarray by multiplying all elements [0 marks]  
+   - The submission calculates the product of elements but not for all subarrays of size k.
+3. Maintains and updates the maximum product found across all subarrays [0 marks]  
+   - The submission does not maintain or update the maximum product found.
+4. Handles edge cases such as when array length is less than k [0 marks]  
+   - The submission does not handle edge cases where the array length is less than k.
+5. Analyzes time complexity as O(n*k) and space complexity as O(1) [0 marks]  
+   - The submission does not analyze time or space complexity.
+
+"Marks Scored out of total marks"  
+0 out of 5 marks

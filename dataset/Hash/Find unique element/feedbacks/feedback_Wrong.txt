@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 3: Using hashing
+
+"Feedback with marks"  
+1. Initialize a HashMap to keep track of how many times each element appears in the array. [0 marks]  
+   - The solution does not use a HashMap to track element frequencies. Instead, it uses nested loops to count occurrences.
+
+2. Iterate through the array and update the frequency of each element in the HashMap. [0 marks]  
+   - The solution does not update frequencies in a HashMap; it uses a nested loop to count occurrences.
+
+3. Check the frequency of each element in the HashMap to identify the one that does not appear a multiple of **k** times. [0 marks]  
+   - The solution checks the frequency using a nested loop, not a HashMap.
+
+4. If an element with a frequency that is not a multiple of **k** is found, return it as the unique element. [1 mark]  
+   - The solution correctly identifies and returns the element whose frequency is not a multiple of **k**.
+
+5. If no unique element is found after checking all elements, return a default value (e.g., -1). [1 mark]  
+   - The solution correctly returns -1 if no unique element is found.
+
+"Marks Scored out of total marks"  
+2 out of 5 marks

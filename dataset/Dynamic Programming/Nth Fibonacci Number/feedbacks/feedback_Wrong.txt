@@ -1,0 +1,15 @@
+"Selected rubric"  
+Solution 1 (Naive Approach - Recursion)
+
+"Feedback with marks"  
+1. Implement base cases: if n ≤ 1, return n. [1 mark]  
+   - The base case is implemented, but there is a mistake. The function returns 1 for both n = 0 and n = 1, which is incorrect. It should return 0 for n = 0 and 1 for n = 1. [0 marks]
+
+2. For n > 1, recursively calculate F(n) = F(n-1) + F(n-2). [2 marks]  
+   - The recursive calculation is correctly implemented. [2 marks]
+
+3. Return the final result for the nth Fibonacci number. [1 mark]  
+   - The function returns the result of the recursive calculation, but due to the incorrect base case, the result is incorrect for n = 0. [0 marks]
+
+"Marks Scored out of total marks"  
+2 out of 4 marks

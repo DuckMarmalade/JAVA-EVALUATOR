@@ -446,8 +446,8 @@ class JavaCodeAnalyzer:
         #         previous_context = "\n".join([str(item) for item in similar_analyses])
         # #^ PROMPT INSTRUCTIONS CAN BE IMPROVED. eg any potential issues in the semantics of the code strictly and not the ones regardig readability and structure
         prompt = f"""
-        You are evaluating a Java {component_type} component as part of a lab test submission.
-        Perform a HIGH-LEVEL SCAN of the following component:
+        You are evaluating a Java {component_type} for a lab test submission.
+        Perform a HIGH-LEVEL ANALYSIS of the following component:
 
         Component Name: {details['name']}
         
@@ -457,14 +457,23 @@ class JavaCodeAnalyzer:
         Implementation:
         {details['implementation']}
         
-        TASK: Provide a brief high-level analysis focusing ONLY on:
-        1. Primary purpose of this component (What does it aim to accomplish?)
-        2. Component structure and organization (Is it well-structured?)
-        3. Obvious syntax and naming issues (Any glaring problems?)
-        4. Completeness (Does it appear to implement the necessary functionality?)
+        TASK: Provide a brief high-level analysis using EXACTLY the following format:
+
+        PURPOSE:
+        [1-2 sentences describing the main functionality of the component]
+
+        ALGORITHM:
+        [Name and brief description of the algorithm/approach used]
+
+        POTENTIAL ISSUES:
+        - [Bullet point listing a potential logical error or concern, if any]
+        - [Another issue, if applicable]
         
-        This is just an initial scan - deeper semantic analysis will be performed separately.
-        Keep your response concise (under 100 words) and focus only on immediately observable aspects.
+        COMPLETENESS:
+        [1 sentence stating whether the component appears to implement required functionality]
+
+        Keep your entire response under 100 words total. Focus only on observable functional aspects.
+        DO NOT comment on coding style, formatting, or documentation unless it impacts logical correctness.
         """
         
         self.logger.log("Sending prompt to ChatGroq", {"prompt_length": len(prompt)})
@@ -541,11 +550,11 @@ class JavaCodeAnalyzer:
         #^ PROMPT INSTRUCTIONS CAN BE IMPROVED. eg any potential issues in the semantics of the code strictly and not the ones regardig readability and structure
         prompt = f"""
         You are evaluating a Java {component_type} for a lab test submission. 
-        Perform an IN-DEPTH ANALYSIS of the semantics and logic:
+        Perform an IN-DEPTH ALGORITHM ANALYSIS:
 
         COMPONENT: {details['name']} ({component_type})
 
-        Initial Scan Results:
+        Initial Analysis Results:
         {component.get('first_pass_analysis', 'Not available')}
         
         Component Details:
@@ -560,29 +569,28 @@ class JavaCodeAnalyzer:
         Implementation:
         {details['implementation']}
         
-        TASK: Conduct a detailed examination of the semantics and logic, focusing on:
+        TASK: Analyze this implementation using EXACTLY the following format:
 
-        1. ALGORITHM CORRECTNESS:
-        - Is the implementation logically correct?
-        - Are there edge cases that aren't handled?
-        - For the given problem domain, does the solution work as expected?
+        LOGICAL CORRECTNESS:
+        [2-3 sentences about whether the algorithm is logically correct]
+        - Strengths: [List 1-2 key strengths in the logical implementation]
+        - Weaknesses: [List 1-2 key weaknesses or edge cases that aren't handled]
+        
+        TIME COMPLEXITY:
+        - Overall: O(X) where X is [explanation]
+        - Bottleneck: [Identify the specific operation that determines the time complexity]
+        - Potential Improvement: [If applicable, briefly describe how time complexity could be improved]
+        
+        SPACE COMPLEXITY:
+        - Overall: O(X) where X is [explanation]
+        - Key Factors: [What specific data structures or operations contribute to this complexity]
+        
+        ALGORITHM CHOICE:
+        [1-2 sentences on whether this is an appropriate algorithm for the task]
+        [If applicable, briefly describe a more efficient alternative]
 
-        2. LOGICAL FLOW AND CONTROL STRUCTURES:
-        - Is the logical flow appropriate for the task?
-        - Are control structures (loops, conditionals) used effectively?
-        - Could the logic be simplified or optimized?
-
-        3. DEPENDENCY RELATIONSHIPS:
-        - How does this component interact with related components?
-        - Are there coupling issues or dependency problems?
-        - Is the component cohesive (doing one thing well)?
-
-        4. SEMANTIC CORRECTNESS:
-        - Do variables and operations have correct semantic meaning?
-        - Are there logical inconsistencies or contradictions?
-        - Could a different approach better solve the problem?
-
-        Provide specific examples from the code to support your analysis. Focus on the correctness and quality of the implementation rather than style issues.
+        Always provide specific line numbers or code snippets to support your analysis.
+        Focus exclusively on logical correctness and computational efficiency.
         """
         
         self.logger.log("Sending prompt to ChatGroq", {"prompt_length": len(prompt)})
@@ -639,50 +647,56 @@ class JavaCodeAnalyzer:
         #! PROMPT NEEDS TO BE CHANGED AFTER DICUSSION . A RUBRIC CAN GO HERE. 
         prompt = f"""
         You are evaluating a Java {component_type} for a lab test submission. 
-        Provide a FINAL EVALUATION using the following structured rubric:
+        Provide a FINAL EVALUATION using the following rubric and format:
 
         COMPONENT: {details['name']} ({component_type})
 
-        First Pass Analysis (Initial Scan):
+        First Pass Analysis:
         {first_pass}
         
-        Second Pass Analysis (In-depth Examination):
+        Second Pass Analysis:
         {second_pass}
         
         Implementation:
         {details['implementation']}
         
-        EVALUATION RUBRIC:
+        EVALUATION:
         
-        1. CORRECTNESS (0-4 points)
-        - 4: Solution is completely correct, handles all expected inputs and edge cases
-        - 3: Solution is mostly correct with minor logical errors
-        - 2: Solution has significant logical errors but shows understanding of the problem
-        - 1: Solution has fundamental misunderstandings of the problem
-        - 0: Solution is completely incorrect or non-functional
+        LOGICAL CORRECTNESS: [SCORE]/5
+        - Justification: [1-2 sentences with specific examples]
+        - To improve: [1 specific recommendation]
         
-        2. COMPLETENESS (0-3 points)
-        - 3: Implements all required functionality completely
-        - 2: Implements most required functionality
-        - 1: Implements some required functionality
-        - 0: Implements little to none of the required functionality
+        TIME COMPLEXITY: [SCORE]/3
+        - Justification: [1 sentence with Big-O notation]
+        - To improve: [1 specific recommendation if score < 3]
         
-        3. EFFICIENCY (0-2 points)
-        - 2: Uses optimal algorithms and approaches
-        - 1: Solution works but uses suboptimal approaches
-        - 0: Solution has serious efficiency issues
+        SPACE COMPLEXITY: [SCORE]/2
+        - Justification: [1 sentence with Big-O notation]
+        - To improve: [1 specific recommendation if score < 2]
         
-        4. CODE QUALITY (0-1 point)
-        - 1: Code is well-structured, readable, and follows good practices
-        - 0: Code has significant structure or readability issues
+        CODE QUALITY: [SCORE]/2
+        - Justification: [1 sentence focusing only on structural issues that affect algorithm correctness]
+        - To improve: [1 specific recommendation]
         
-        For each rubric item:
-        1. Assign a specific score
-        2. Provide brief justification with specific examples from the code
-        3. Identify what would be needed for a higher score (if applicable)
+        TOTAL SCORE: [SUM]/12
         
-        Conclude with a TOTAL SCORE (sum of all categories, 0-10 points) and 2-3 specific recommendations for improvement.
+        KEY STRENGTHS:
+        - [Key strength 1]
+        - [Key strength 2 if applicable]
+        
+        KEY RECOMMENDATIONS:
+        - [Most important recommendation]
+        - [Second most important recommendation]
+
+        Use the scoring guidelines from the rubric:
+        - LOGICAL CORRECTNESS (0-5): 5=perfect, 4=minor issues, 3=works with limitations, 2=significant issues, 1=major flaws, 0=incorrect
+        - TIME COMPLEXITY (0-3): 3=optimal, 2=reasonable, 1=suboptimal, 0=poor
+        - SPACE COMPLEXITY (0-2): 2=optimal, 1=reasonable, 0=poor
+        - CODE QUALITY (0-2): 2=excellent structure, 1=adequate structure, 0=poor structure affecting correctness
+
+        Be precise and technical. Focus on algorithmic aspects rather than style.
         """
+
         
         self.logger.log("Sending evaluation prompt to ChatGroq", {"prompt_length": len(prompt)})
         response = self.chatgroq.invoke(prompt)
@@ -860,7 +874,7 @@ class JavaCodeAnalyzer:
                         component.pop('implementation')
         return components_dict
     
-    #! I DO NOT THINK THIS FUNCTION IS REQUIRED. KEEPING IT FOR FUTURE USE. APART FORM THAT IT IS FUNCTIONAL AND IT GENERATES A SUMMARY OF THE ENTIRE EVALUATIONINCLUDING FINAL SCORE
+        #! I DO NOT THINK THIS FUNCTION IS REQUIRED. KEEPING IT FOR FUTURE USE. APART FORM THAT IT IS FUNCTIONAL AND IT GENERATES A SUMMARY OF THE ENTIRE EVALUATIONINCLUDING FINAL SCORE
     def generate_summary_report(self, analyzed_components):
         """
         Generate a summary report of the analysis.
@@ -874,6 +888,8 @@ class JavaCodeAnalyzer:
         #*Collect all individual component scores
         all_scores = []
         score_by_type = {}
+        algorithm_issues = []
+        complexity_issues = []
         
         for comp_type, comps in analyzed_components.items():
             type_scores = []
@@ -881,7 +897,7 @@ class JavaCodeAnalyzer:
                 if 'evaluation' in comp:
                     #*Try to extract score from evaluation
                     eval_text = comp['evaluation']
-                    score_match = re.search(r'COMPONENT SCORE.*?(\d+(?:\.\d+)?)', eval_text, re.DOTALL)
+                    score_match = re.search(r'TOTAL SCORE.*?(\d+(?:\.\d+)?)', eval_text, re.DOTALL)
                     if score_match:
                         try:
                             score = float(score_match.group(1))
@@ -891,8 +907,34 @@ class JavaCodeAnalyzer:
                             #*Log the component name and its score
                             comp_name = self._get_component_name(comp, comp_type)
                             self.logger.log(f"Score for {comp_type} {comp_name}: {score}")
-                        except ValueError:
-                            pass
+                            
+                            #*Collect algorithm correctness issues - with safer regex
+                            if "LOGICAL CORRECTNESS" in eval_text:
+                                correctness_section = re.search(r'LOGICAL CORRECTNESS.*?(?=TIME COMPLEXITY|$)', eval_text, re.DOTALL)
+                                if correctness_section:
+                                    # Try to find a score pattern, but don't fail if not found
+                                    score_pattern = re.search(r'(\d+)(?:/|\s*out\s*of\s*)5', correctness_section.group(0))
+                                    if score_pattern and int(score_pattern.group(1)) < 4:
+                                        algorithm_issues.append(f"{comp_name}: {correctness_section.group(0).strip()}")
+                                    # If we can't find the score pattern, still include any section with "error", "incorrect", or "issue"
+                                    elif re.search(r'error|incorrect|issue|fail|bug', correctness_section.group(0), re.IGNORECASE):
+                                        algorithm_issues.append(f"{comp_name}: {correctness_section.group(0).strip()}")
+                            
+                            #*Collect complexity issues - with safer regex
+                            if "TIME COMPLEXITY" in eval_text or "SPACE COMPLEXITY" in eval_text:
+                                complexity_section = re.search(r'(TIME COMPLEXITY|SPACE COMPLEXITY).*?(SPACE COMPLEXITY|CODE QUALITY|$)', eval_text, re.DOTALL)
+                                if complexity_section:
+                                    # Try to find a score pattern, but don't fail if not found
+                                    time_score = re.search(r'(\d+)(?:/|\s*out\s*of\s*)3', complexity_section.group(0))
+                                    space_score = re.search(r'(\d+)(?:/|\s*out\s*of\s*)2', complexity_section.group(0))
+                                    
+                                    # Include if score is low or contains specific keywords
+                                    if ((time_score and int(time_score.group(1)) < 2) or 
+                                        (space_score and int(space_score.group(1)) < 1) or
+                                        re.search(r'inefficient|slow|suboptimal|improve|bottleneck', complexity_section.group(0), re.IGNORECASE)):
+                                        complexity_issues.append(f"{comp_name}: {complexity_section.group(0).strip()}")
+                        except (ValueError, AttributeError) as e:
+                            self.logger.log(f"Error processing score for {comp_type}: {str(e)}")
             
             #*Calculate average score for this component type
             if type_scores:
@@ -918,40 +960,77 @@ class JavaCodeAnalyzer:
         components_text = "\n".join(f"- {comp}" for comp in components_list)
         self.logger.log("Generated components list", {"count": len(components_list)})
         
+        #*Create summary of noted issues
+        algorithm_issues_text = "\n".join(algorithm_issues[:5]) if algorithm_issues else "No major correctness issues identified." #*Limit to top 5 issues
+        complexity_issues_text = "\n".join(complexity_issues[:5]) if complexity_issues else "No major complexity issues identified." #*Limit to top 5 issues
+        
+        #! IMPROVED PROMPT AFTER DISCUSSION - FOCUSES ON ALGORITHM CORRECTNESS, TIME/SPACE COMPLEXITY & CODE QUALITY
         prompt = f"""
-        Generate a comprehensive summary report for a Java codebase analysis.
+        Generate a comprehensive summary report for a Java lab test submission focused on algorithmic correctness and efficiency.
         
         Components analyzed:
         {components_text}
         
         Component counts: {json.dumps(component_counts)}
         
-        Overall average score: {avg_score if avg_score is not None else 'Not available'}
+        Overall average score: {avg_score if avg_score is not None else 'Not available'}/12
         
         Scores by component type: {json.dumps(score_by_type) if score_by_type else 'Not available'}
         
-        Based on all the individual component analyses and evaluations, provide:
+        Key algorithm correctness issues identified:
+        {algorithm_issues_text}
         
-        1. OVERALL ARCHITECTURE ASSESSMENT:
-           - Describe the overall architecture and design patterns
-           - Evaluate the component relationships and dependencies
-           - Assess the code organization and structure
+        Key complexity issues identified:
+        {complexity_issues_text}
         
-        2. KEY STRENGTHS:
-           - Identify the major strengths of the codebase
-           - Highlight well-implemented patterns or techniques
+        Use EXACTLY the following format for your report:
+
+        # LAB TEST EVALUATION SUMMARY
         
-        3. KEY WEAKNESSES:
-           - Identify the major weaknesses or areas for improvement
-           - Point out potential bugs, anti-patterns, or design flaws
+        ## ALGORITHM ASSESSMENT (40%)
         
-        4. RECOMMENDATIONS:
-           - Provide actionable recommendations for improvement
-           - Suggest refactorings or architectural changes
+        ### Correctness Analysis:
+        [2-3 sentences evaluating overall algorithm correctness]
         
-        5. FINAL SCORE:
-           - Provide an overall quality score (1-10) for the codebase
-           - Justify the score based on the analysis
+        ### Critical Issues:
+        - [Specific issue #1 with affected component]
+        - [Specific issue #2 with affected component]
+        
+        ### Correctness Score: [X]/40
+        
+        ## COMPUTATIONAL EFFICIENCY (40%)
+        
+        ### Time Complexity:
+        - Overall: [Big-O notation for key components]
+        - Key bottlenecks: [List the most significant performance bottlenecks]
+        
+        ### Space Complexity:
+        - Overall: [Big-O notation for key components]
+        - Main concerns: [List any memory usage issues]
+        
+        ### Efficiency Score: [X]/40
+        
+        ## CODE STRUCTURE (20%)
+        
+        ### Structural Impact on Algorithms:
+        [2-3 sentences on how code structure affects algorithm implementation]
+        
+        ### Structure Score: [X]/20
+        
+        ## FINAL ASSESSMENT
+        
+        ### Total Score: [X]/100
+        
+        ### Top 3 Recommendations:
+        1. [Most important recommendation]
+        2. [Second recommendation]
+        3. [Third recommendation]
+        
+        ### Path to Perfect Score:
+        [1-2 sentences explaining what would be required for a perfect score]
+        
+        Keep your assessment technical and focused on algorithmic aspects rather than stylistic concerns.
+        Use precise terminology from algorithms and data structures in your evaluation.
         """
         
         self.logger.log("Sending summary report prompt to ChatGroq", {"prompt_length": len(prompt)})
@@ -961,7 +1040,7 @@ class JavaCodeAnalyzer:
         
         #*Extract final score for logging
         try:
-            final_score_match = re.search(r'FINAL SCORE.*?(\d+(?:\.\d+)?)', report, re.DOTALL)
+            final_score_match = re.search(r'FINAL.*?ASSESSMENT.*?(\d+)(?:/|\s*out\s*of\s*)100', report, re.DOTALL | re.IGNORECASE)
             if final_score_match:
                 final_score = float(final_score_match.group(1))
                 self.logger.log("Final codebase score", {"score": final_score})
@@ -1157,7 +1236,7 @@ if __name__ == "__main__":
         model_name="llama-3.3-70b-versatile",
         api_key="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"
     )
-    java_file_path = 'TestJavaCode.java'
+    java_file_path = 'dataset/Arrays/Largest product/Solution.java'
     
     #*Process and analyze (this creates the PKL file)
     analyzed_components = analyzer.process_and_analyze(java_file_path)

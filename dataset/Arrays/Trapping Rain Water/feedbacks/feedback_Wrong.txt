@@ -1,0 +1,33 @@
+"Selected rubric"  
+Solution 2: Using 2 pointers
+
+"Feedback with marks"  
+1. Set left pointer to start of traversable array (index 1). Set right pointer to end of traversable array (second-to-last element) to Establish boundaries for water trapping calculation [0 marks]  
+   - The code initializes `l` to 0 and `r` to `arr.length-1`, which does not match the rubric's requirement of starting from index 1 and ending at the second-to-last element.
+
+2. Initialize lMax with height of element just before left pointer. Initialize rMax with height of element just after right pointer. Prepare tracking of maximum heights from both sides [0 marks]  
+   - The code does not initialize `lMax` and `rMax` as described in the rubric. It directly uses `arr[l]` and `arr[r]` for comparison.
+
+3. Create res variable to store total trapped water. Initialize res to 0. Prepares accumulator for water trapping calculation [1 mark]  
+   - The code initializes `maxWat` to 0, which serves as the accumulator for trapped water.
+
+4. Implement while loop to traverse from both ends. Continue until left and right pointers cross [1 mark]  
+   - The code correctly implements a while loop that continues until `l` is greater than `r`.
+
+5. Check if right maximum is less than or equal to left maximum. Calculate water trapped at right pointer. Use Math.max(0, rMax - arr[right]) to ensure non-negative water. Update right maximum height. [0 marks]  
+   - The code does not implement this logic. It only checks if `arr[l]` is less than `arr[r]` and does not calculate water trapped using `rMax`.
+
+6. Logic when left maximum is smaller. Calculate water trapped at left pointer. Use Math.max(0, lMax - arr[left]) to ensure non-negative water. Update left maximum height [0 marks]  
+   - The code does not implement this logic. It only checks if `arr[l]` is less than `arr[r]` and does not calculate water trapped using `lMax`.
+
+7. Move right pointer left when right side is processed. Move left pointer right when left side is processed. Systematically reduce search space. [1 mark]  
+   - The code correctly moves the `l` pointer right when `arr[l]` is less than `arr[r]` and moves the `r` pointer left otherwise.
+
+8. Ensure loop continues while left <= right. Prevent infinite loops or unnecessary iterations. Provide clean termination condition. [1 mark]  
+   - The loop condition `while(l<=r)` ensures the loop continues until the pointers cross.
+
+9. Return total accumulated water [1 mark]  
+   - The code correctly returns `maxWat`, which is intended to store the total accumulated water.
+
+"Marks Scored out of total marks"  
+5 out of 9 marks

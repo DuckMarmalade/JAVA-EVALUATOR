@@ -1,0 +1,6 @@
+Selected rubric: None of the provided rubrics are suitable for evaluating the student's submission, as the rubrics are for finding first and last occurrences in a sorted array, while the student's submission is for finding the minimum cost path in a grid.
+
+Feedback with marks:
+1. The submission does not match any of the provided rubrics, as it is not related to finding occurrences in a sorted array. [0 marks]
+
+Marks Scored out of total marks: 0 out of 5 marks

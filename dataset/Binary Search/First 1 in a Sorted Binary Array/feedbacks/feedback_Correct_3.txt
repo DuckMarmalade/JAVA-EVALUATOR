@@ -1,0 +1,15 @@
+"Selected rubric"  
+Solution 2: Linear Search Approach
+
+"Feedback with marks"  
+1. Iterate through the array in a single pass [2 marks]  
+   - The solution iterates through the array using a for loop, which satisfies this criterion. [2 marks]
+
+2. Correctly identify and return the first occurrence of 1 [2 marks]  
+   - The solution correctly identifies the first occurrence of 1 and returns its index immediately. [2 marks]
+
+3. Handle the case when no 1 is present in the array [1 mark]  
+   - The solution returns -1 if no 1 is found, which handles this case correctly. [1 mark]
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

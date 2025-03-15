@@ -1,0 +1,8 @@
+"Selected rubric"  
+The student's submission does not match any of the provided rubrics as it implements Dijkstra's algorithm for finding the minimum cost path in a grid, which is unrelated to finding first and last occurrences in a sorted array.
+
+"Feedback with marks"  
+The submission cannot be graded against the provided rubrics as it addresses a different problem. The solution correctly implements Dijkstra's algorithm to find the minimum cost path in a grid, which is a valid approach for the given problem statement but does not align with any of the rubric solutions provided.
+
+"Marks Scored out of total marks"  
+0 out of 0 marks (as the rubric does not apply to the submitted solution).

@@ -1,0 +1,29 @@
+Solution 1: using bitwise AND
+
+
+1.  Create an array to count how many times each bit position (from 0 to 31) is set to 1 in the binary representation of all elements. [1 mark]  
+2. For each bit position, check if it is set in each element of the array. If it is, increment the corresponding count in the count array. [1 mark]  
+3. For each bit position, check if the count of set bits is not a multiple of k. These bits are part of the unique element. [1 mark]  
+4. Combine the bits that are not a multiple of k to form the binary representation of the unique element. [1 mark]  
+5. Divide the result by the frequency of the unique element to ensure correctness. [1 mark]  
+6. Output the unique element that appears fewer times than the others. [1 mark]  
+
+
+Solution 2: using sorting
+1. Arrange the elements in ascending order so that duplicate elements appear consecutively. [1 mark]  
+2. Move through the array in increments of k to check for groups of duplicate elements. [1 mark]  
+3. Compare the current element with the next element. If they are not the same, the current element is unique. [1 mark]  
+4. If a unique element is found, return it as the result. [1 mark]  
+5. If no unique element is found after iterating through the array, return a default value (e.g., -1). [1 mark]  
+
+
+
+
+Solution 3: Using hashing
+
+
+1. Initialize a HashMap to keep track of how many times each element appears in the array. [1 mark]  
+2. Iterate through the array and update the frequency of each element in the HashMap. [1 mark]  
+3. Check the frequency of each element in the HashMap to identify the one that does not appear a multiple of **k** times. [1 mark]  
+4. If an element with a frequency that is not a multiple of **k** is found, return it as the unique element. [1 mark]  
+5. If no unique element is found after checking all elements, return a default value (e.g., -1). [1 mark]

@@ -1,0 +1,33 @@
+"Selected rubric"  
+Solution 1: Naive Approach
+
+"Feedback with marks"  
+1. Start the loop from the second element to the second-to-last element. Skip the first and last elements since they cannot trap water. Ensure systematic processing of potential water-trapping positions. [1 mark]  
+   - The solution correctly starts the loop from the second element to the second-to-last element. Marks: 1
+
+2. Find the maximum height on the left of the current element. Initialize left with the current element's height. Traverse from start of the array to the current index. Update left with the maximum height encountered.  
+   - The solution uses an array `left` to store the maximum height to the left of each element, which is correctly initialized and updated. Marks: 1
+
+3. Find the maximum height on the right of the current element. Initialize right with the current element's height. Traverse from current index to end of array. Update right with the maximum height encountered. [1 mark]  
+   - The solution uses an array `right` to store the maximum height to the right of each element, which is correctly initialized and updated. Marks: 1
+
+4. Calculate water trapped at the current index. Use the formula: Math.min(left, right) - arr[i]. Determines trapped water based on the shorter of the left and right heights. Subtracts the current element's height to get trapped water. [2 marks]  
+   - The solution correctly calculates the water trapped at each index using the formula. Marks: 2
+
+5. Ensure that trapped water is non-negative before adding to the result. Prevents incorrect accumulation due to height discrepancies. [1 mark]  
+   - The solution ensures non-negative trapped water by checking if `Math.min(left[i], right[i]) > arr[i]` before adding to the total. Marks: 1
+
+6. Add the calculated trapped water at the current index to res. Continuously updates the total trapped water. Builds a cumulative result throughout the iteration. [1 mark]  
+   - The solution correctly accumulates the trapped water in the `water` variable. Marks: 1
+
+7. Ensure proper handling of empty arrays or arrays with less than 3 elements (should return 0). [1 mark]  
+   - The solution does not explicitly handle arrays with less than 3 elements, which could lead to incorrect results. Marks: 0
+
+8. Consider cases where all bars are of equal height (should return 0). (1 mark)  
+   - The solution inherently handles this case correctly as no water would be trapped. Marks: 1
+
+9. Return the total trapped water stored in res. Provides the final computed result for the entire array. [1 mark]  
+   - The solution correctly returns the total trapped water. Marks: 1
+
+"Marks Scored out of total marks"  
+9 out of 10 marks

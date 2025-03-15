@@ -1,0 +1,12 @@
+"Selected rubric"  
+Solution 3: Alternative Binary Search Implementation
+
+"Feedback with marks"  
+1. Set up tracking variable for potential answer [1 mark] - The variable `ans` is correctly initialized to store the potential answer. [1 mark]  
+2. Implement binary search with correct loop condition [1 mark] - The binary search loop is correctly implemented with the condition `while(low<=high)`. [1 mark]  
+3. Update tracking variable when potential match is found [1 mark] - The tracking variable `ans` is updated correctly when a potential match is found (`if(arr[mid]==1)`). [1 mark]  
+4. Correctly narrow search space in each iteration [1 mark] - The search space is correctly narrowed using `low=mid+1` and `high=mid-1` based on the comparison results. [1 mark]  
+5. Return final result after search completion [1 mark] - The function correctly returns the final result stored in `ans`. [1 mark]  
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

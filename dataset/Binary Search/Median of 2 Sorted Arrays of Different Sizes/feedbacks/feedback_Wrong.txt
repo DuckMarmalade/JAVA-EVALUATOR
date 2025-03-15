@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1: Naive Approach (Using Sorting)
+
+"Feedback with marks"  
+1. Merge the two arrays into a single array [1 mark]  
+   - The student correctly merges the two arrays using `System.arraycopy`. [1 mark]
+
+2. Sort the merged array [1 mark]  
+   - The student sorts the merged array using `Arrays.sort`. [1 mark]
+
+3. For odd length merged array, return the middle element [1 mark]  
+   - The student correctly identifies and returns the middle element for an odd-length array. [1 mark]
+
+4. For even length merged array, return the average of the two middle elements [1 mark]  
+   - The student correctly calculates and returns the average of the two middle elements for an even-length array. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1: Naive Approach (Using Sorting)
+
+"Feedback with marks"  
+1. Merge the two arrays into a single array [1 mark]  
+   - The student correctly merges the two arrays into a single array using two separate loops. [1 mark]
+
+2. Sort the merged array [1 mark]  
+   - The student did not sort the merged array. This step is missing. [0 marks]
+
+3. For odd length merged array, return the middle element [1 mark]  
+   - The student correctly identifies the middle element for an odd-length array. However, the condition `if( n/2 == 1)` is incorrect for checking odd length. It should be `if (n % 2 == 1)`. Despite this, the logic for returning the middle element is correct. [1 mark]
+
+4. For even length merged array, return the average of the two middle elements [1 mark]  
+   - The student correctly calculates the average of the two middle elements for an even-length array. [1 mark]
+
+"Marks Scored out of total marks"  
+3 out of 4 marks

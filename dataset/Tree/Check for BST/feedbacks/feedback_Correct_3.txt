@@ -1,0 +1,24 @@
+"Selected rubric"  
+Solution 1: Min-Max Range Approach
+
+"Feedback with marks"  
+1. Create a helper function that takes a node, minimum value, and maximum value as parameters [1 mark]  
+   - The student has implemented a helper function `isbstutil` that takes a node, minimum value, and maximum value as parameters. [1 mark]
+
+2. Return true if the node is null (base case) [1 mark]  
+   - The student correctly returns true if the node is null. [1 mark]
+
+3. Check if current node's value violates the valid range (< min or > max); if so, return false [1 mark]  
+   - The student checks if the current node's value is less than or equal to min or greater than or equal to max and returns false if so. [1 mark]
+
+4. Recursively validate left subtree with updated maximum as current node's value [1 mark]  
+   - The student correctly validates the left subtree with the updated maximum as the current node's value. [1 mark]
+
+5. Recursively validate right subtree with updated minimum as current node's value [1 mark]  
+   - The student correctly validates the right subtree with the updated minimum as the current node's value. [1 mark]
+
+6. Return true only if both left and right subtrees are valid BSTs [1 mark]  
+   - The student returns true only if both left and right subtrees are valid BSTs. [1 mark]
+
+"Marks Scored out of total marks"  
+6 out of 6 marks

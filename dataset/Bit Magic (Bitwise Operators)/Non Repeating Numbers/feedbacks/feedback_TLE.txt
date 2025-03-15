@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 3: Using Frequency Counter
+
+"Feedback with marks"  
+1. Create a frequency map (hash map or dictionary) to store the count of each element [1 mark]  
+   - The solution uses `Collections.frequency` to determine the frequency of each element, which effectively serves as a frequency counter. [1 mark]
+
+2. Iterate through the array and update the frequency of each element [1 mark]  
+   - The solution iterates through the list and checks the frequency of each element. [1 mark]
+
+3. Identify elements with frequency 1 (the non-repeating elements) [1 mark]  
+   - The solution correctly identifies elements with a frequency of 1 and adds them to `flist`. [1 mark]
+
+4. Return these elements in increasing order [1 mark]  
+   - The solution sorts `flist` and returns it, ensuring the elements are in increasing order. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

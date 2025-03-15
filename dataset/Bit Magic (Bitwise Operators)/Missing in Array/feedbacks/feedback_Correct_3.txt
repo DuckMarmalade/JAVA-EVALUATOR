@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1: Mathematical Sum Approach
+
+"Feedback with marks"  
+1. Initialize a variable to store the expected sum of integers from 1 to n (n*(n+1)/2) [1 mark]  
+   - The student correctly initializes `totalSum` as the expected sum using the formula `n*(n+1)/2`. [1 mark]
+
+2. Calculate the actual sum of all elements in the array [1 mark]  
+   - The student correctly calculates the actual sum of the array elements using a loop. [1 mark]
+
+3. Return the difference between the expected sum and the actual sum [1 mark]  
+   - The student correctly returns the difference between `totalSum` and `arraySum`. [1 mark]
+
+4. Correctly handle integer overflow considerations for large values of n [1 mark]  
+   - The student uses `long` for `totalSum` and `arraySum` to handle potential overflow, and casts the result back to `int`. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

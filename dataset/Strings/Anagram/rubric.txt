@@ -1,0 +1,15 @@
+Anagram:
+   1. Check if two Strings are Anagrams of each other
+   2. Solution 1:
+      1. Initialize a map or dictionary or array to store the character frequencies. Initially, the frequency for each character should be zero. [1 mark]
+      2. For each character in the first string, the corresponding frequency is incremented by 1. [1 mark]
+      3. For each character in the second string, decrement its corresponding frequency by 1. [1 mark]
+      4. Iterate through the entire map or dictionary or array. If any frequency is non-zero, then return false. Else return true. [1 mark]
+   3. Solution 2:
+      1. Initialize a map or dictionary or array to store the character frequencies. Initially, the frequency for each character should be zero. Keep separate data structures for each of the strings. [1 mark]
+      2. For each character in the first string, the corresponding frequency in its data structure is incremented by 1. [1 mark]
+      3. For each character in the second string, the corresponding frequency in its data structure is incremented by 1. [1 mark]
+      4. Iterate through both the data structures. If the frequency for any unique character in both the data structures does not match, return false. Else return true. [1 mark]
+   4. Solution 3:
+      1. Sort both the strings. [2 marks]
+      2. Return true if both the sorted strings are exactly same. Else, return false [2 marks]

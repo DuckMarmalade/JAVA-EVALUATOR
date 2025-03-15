@@ -1,0 +1,11 @@
+"Selected rubric"  
+Solution 3
+
+"Feedback with marks"  
+1. Sort both the strings. [2 marks]  
+   - The solution correctly converts both strings to character arrays and sorts them using `Arrays.sort()`. [2 marks]  
+2. Return true if both the sorted strings are exactly same. Else, return false [2 marks]  
+   - The solution correctly checks if the sorted character arrays are equal using `Arrays.equals()`. [2 marks]  
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

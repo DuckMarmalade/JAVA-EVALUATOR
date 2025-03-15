@@ -1,0 +1,8 @@
+"Selected rubric"  
+None of the provided rubrics match the student's submission, as the rubrics are for finding first and last occurrences in a sorted array, while the student's submission is for finding the minimum cost path in a grid.
+
+"Feedback with marks"  
+The student's submission does not align with any of the provided rubrics, so no specific feedback can be given based on the rubric points.
+
+"Marks Scored out of total marks"  
+0 out of 0 marks (as the rubric does not apply to the submission).

@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 1: Brute Force Approach (Linear Search)
+
+"Feedback with marks"  
+1. Initialize variables to track first and last occurrences [0 marks]  
+   - Feedback: The solution does not explicitly initialize variables to track the first and last occurrences. Instead, it uses an ArrayList to store indices, which is not the intended approach for this rubric point.
+
+2. Correctly traverse the array from left to right [1 mark]  
+   - Feedback: The solution correctly traverses the array from left to right in the first loop to find occurrences of the element.
+
+3. Properly update first occurrence when element is first found [0 marks]  
+   - Feedback: The solution does not properly update the first occurrence. It adds all occurrences to the list instead of stopping after finding the first occurrence.
+
+4. Consistently update last occurrence on each encounter of the target element [0 marks]  
+   - Feedback: The solution does not consistently update the last occurrence. The second loop is intended to find the last occurrence but incorrectly uses `i-` instead of `i--`, causing a syntax error.
+
+5. Return appropriate result with both occurrences or [-1, -1] if not found [0 marks]  
+   - Feedback: The solution does not return the appropriate result. It returns all indices of occurrences instead of just the first and last. Additionally, it does not handle the case where the element is not found.
+
+"Marks Scored out of total marks"  
+1 out of 5 marks

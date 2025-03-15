@@ -1,0 +1,11 @@
+"Selected rubric"  
+Solution 1: Backward Traversal
+
+"Feedback with marks"  
+1. Understand that we need to find the index of the last occurrence of '1' in the string [1 mark] - The student understands the problem requirement as they are attempting to find the last occurrence of '1'.  
+2. Traverse the string from the end toward the beginning (right to left) [1 mark] - The student attempts to traverse from the end, but the loop condition is incorrect (`i=s.length()` should be `i=s.length()-1`).  
+3. Return the index of the first occurrence of '1' encountered during this backward traversal [1 mark] - The student correctly returns the index when '1' is found.  
+4. Return -1 if no '1' is found in the string [1 mark] - The student attempts to return -1, but the syntax is incorrect due to the misplaced `else` statement.  
+
+"Marks Scored out of total marks"  
+2 out of 4 marks

@@ -1,0 +1,28 @@
+Remove Consonants from a String
+
+Solution 1: Character-by-Character Iteration with Vowel Check Function
+1. Define a helper function isVowel to check if a character is a vowel (both lowercase and uppercase) [1 mark]
+2. Initialize an empty result string to store vowels [1 mark]
+3. Iterate through each character in the input string and check if it's a vowel using the helper function [1 mark]
+4. If a character is a vowel, append it to the result string [1 mark]
+5. After iteration, check if the result string is empty, if yes, return "No Vowel" [1 mark]
+
+Solution 2: Direct Character-by-Character Iteration
+1. Initialize an empty result string to store vowels [1 mark]
+2. Iterate through each character in the input string [1 mark]
+3. For each character, directly check if it is one of the vowels (both lowercase and uppercase) using a compound condition [1 mark]
+4. If a character is a vowel, append it to the result string [1 mark]
+5. After iteration, check if the result string is empty, if yes, return "No Vowel" [1 mark]
+
+Solution 3: Using String Manipulation
+1. Create a string containing all vowels (both lowercase and uppercase) [1 mark]
+2. Initialize an empty result string to store vowels [1 mark]
+3. Iterate through each character in the input string [1 mark]
+4. For each character, check if it is present in the vowel string using string's find method or similar [1 mark]
+5. If a character is found in the vowel string, append it to the result string [1 mark]
+6. After iteration, check if the result string is empty, if yes, return "No Vowel" [1 mark]
+
+Solution 4: Using Regular Expressions (Language-Dependent)
+1. Define a regular expression pattern to match all consonants [2 marks]
+2. Use the regular expression to replace all consonants with an empty string [2 marks]
+3. Check if the resulting string is empty, if yes, return "No Vowel" [1 mark]

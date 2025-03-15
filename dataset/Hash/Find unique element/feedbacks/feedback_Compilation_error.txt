@@ -1,0 +1,24 @@
+"Selected rubric"  
+Solution 1: using bitwise AND
+
+"Feedback with marks"  
+1. Create an array to count how many times each bit position (from 0 to 31) is set to 1 in the binary representation of all elements. [0 marks]  
+   - The student did not create an array to count the bits; instead, they used a single integer `sum` to count the bits for each position.
+
+2. For each bit position, check if it is set in each element of the array. If it is, increment the corresponding count in the count array. [1 mark]  
+   - The student correctly iterates over each bit position and checks if it is set in each element, incrementing `sum` accordingly.
+
+3. For each bit position, check if the count of set bits is not a multiple of k. These bits are part of the unique element. [1 mark]  
+   - The student correctly checks if `sum % k != 0` to determine if the bit is part of the unique element.
+
+4. Combine the bits that are not a multiple of k to form the binary representation of the unique element. [1 mark]  
+   - The student correctly combines these bits using `result |= (1 << i)`.
+
+5. Divide the result by the frequency of the unique element to ensure correctness. [0 marks]  
+   - The student did not divide the result by the frequency of the unique element.
+
+6. Output the unique element that appears fewer times than the others. [0 marks]  
+   - The student did not return or output the result.
+
+"Marks Scored out of total marks"  
+3 out of 6 marks

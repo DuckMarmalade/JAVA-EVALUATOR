@@ -1,0 +1,13 @@
+```
+"Selected rubric"
+"Solution 1: Mathematical Sum Approach"
+
+"Feedback with marks"
+1. Initialize a variable to store the expected sum of integers from 1 to n (n*(n+1)/2) [1 mark] - Correctly implemented. The expected sum is calculated using the formula n*(n+1)/2. [1 mark]
+2. Calculate the actual sum of all elements in the array [1 mark] - The code attempts to calculate the actual sum by subtracting each element from the expected sum, which is a valid approach. However, there is a syntax error in the loop condition `nums-1.length` which should be `nums.length`. [0 mark]
+3. Return the difference between the expected sum and the actual sum [1 mark] - The code returns the difference correctly, but due to the error in the loop, this part is not executed correctly. [0 mark]
+4. Correctly handle integer overflow considerations for large values of n [1 mark] - The code does not explicitly handle integer overflow, which is important for large values of n. [0 mark]
+
+"Marks Scored out of total marks"
+1 out of 4 marks
+```

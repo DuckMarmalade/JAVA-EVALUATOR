@@ -1,0 +1,39 @@
+Largest Product 
+Solution 1: Sliding Window Approach
+1. Initializes variables for window boundaries (i for start, j for end) [1 mark]
+2. Initializes a variable to track the product and a variable to track maximum product found [1 mark]
+* Implements sliding window logic to maintain a window of size k [2 marks]:
+   3. Multiplies current element to the product
+    4.Handles case when window size is less than k (expanding phase)
+   5. Handles case when window size equals k (sliding phase)
+6. Correctly updates maximum product when window size reaches k [1 mark]
+7. Correctly handles division by the leftmost element when sliding the window [1 mark]
+8. Returns the maximum product found [1 mark]
+
+Solution 2: Brute Force Approach
+1. Correctly sets up nested loops to examine all subarrays of size k [1 mark]
+2. Properly calculates product of each subarray by multiplying all elements [1 mark]
+3. Maintains and updates the maximum product found across all subarrays [1 mark]
+4. Handles edge cases such as when array length is less than k [1 mark]
+5. Analyzes time complexity as O(n*k) and space complexity as O(1) [1 mark]
+
+Solution 3: Prefix Products Approach
+1. Creates an array to store prefix products [1 mark]
+2. Correctly calculates prefix products for the entire array [1 mark]
+3. Uses prefix products to find product of any subarray of size k in O(1) time [2 marks]
+4. Properly handles edge cases including zeros in the array [1 mark]
+5. Analyzes time complexity as O(n) and space complexity as O(n) [1 mark]
+
+Solution 4: Two-Pointer Technique
+1. Implements explicit start and end pointers to track window boundaries [1 mark]
+2. Maintains correct product while sliding the window through the array [1 mark]
+3. Updates maximum product only when window size reaches k [1 mark]
+4. Correctly removes contribution of elements leaving the window [1 mark]
+5. Analyzes time complexity as O(n) and space complexity as O(1) [1 mark]
+
+Solution 5: Logarithm-Based Approach
+1. Converts multiplication problem to addition using logarithms to prevent overflow [1 mark]
+2. Correctly maintains running sum of logarithms for the current window [1 mark]
+3. Properly adds new elements and removes elements leaving the window [1 mark]
+4. Converts back from logarithm space to obtain the final result [1 mark]
+5. Discusses precision limitations of floating-point arithmetic [1 mark]

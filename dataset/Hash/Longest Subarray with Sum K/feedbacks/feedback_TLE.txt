@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 1
+
+"Feedback with marks"  
+1. Initialize a variable to track the maximum subarray length (result = 0). [1 mark]  
+   - The student initializes `maxLen` to track the maximum subarray length. [1 mark]
+
+2. Use nested loops to consider all possible subarrays - outer loop for starting point, inner loop for ending point. [1 mark]  
+   - The student uses nested loops with `i` and `j` to consider all possible subarrays. [1 mark]
+
+3. For each subarray, calculate its sum by adding elements one by one. [1 mark]  
+   - The student calculates the sum of each subarray using the prefix sum array. [1 mark]
+
+4. When a subarray with sum equal to k is found, calculate its length (j - i + 1) and update result if this length is greater than the current result. [1 mark]  
+   - The student checks if the sum equals `k` and updates `maxLen` accordingly. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

@@ -1,0 +1,15 @@
+"Selected rubric"  
+Solution 1: Iterative Approach (O(n) Time, O(1) Space)
+
+"Feedback with marks"  
+1. Initialize pointers: prev as NULL, curr as head, and next as NULL. [1 mark]  
+   - The student correctly initializes `prev` as `null`, `current` as `head`, and `next` as `null`. [1 mark]
+
+2. Traverse the linked list, reversing pointers at each step. [2 marks]  
+   - The student correctly uses a `while` loop to traverse the linked list and reverses the pointers at each step. [2 marks]
+
+3. Update the head pointer to point to the new first node (previously the last node). [1 mark]  
+   - The student correctly returns `prev`, which is the new head of the reversed list. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

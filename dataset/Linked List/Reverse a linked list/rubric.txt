@@ -1,0 +1,18 @@
+Reverse a Linked List
+
+Solution 1: Iterative Approach (O(n) Time, O(1) Space)
+1. Initialize pointers: prev as NULL, curr as head, and next as NULL. [1 mark]
+2. Traverse the linked list, reversing pointers at each step. [2 marks]
+3. Update the head pointer to point to the new first node (previously the last node). [1 mark]
+
+Solution 2: Recursive Approach (O(n) Time, O(n) Space)
+1. Handle base case: if head is NULL or head.next is NULL, return head. [1 mark]
+2. Recursively call reverseList on the rest of the list. [1 mark]
+3. Set head.next.next = head and head.next = NULL to reverse the current node's link. [1 mark]
+4. Return the new head of the reversed list. [1 mark]
+
+Solution 3: Stack-Based Approach (O(n) Time, O(n) Space)
+1. Push all nodes onto a stack. [1 mark]
+2. Set the last node as the new head of the reversed linked list. [1 mark]
+3. Pop nodes from the stack and connect them in reverse order. [1 mark]
+4. Set the next pointer of the last node to NULL to mark the end of the list. [1 mark]

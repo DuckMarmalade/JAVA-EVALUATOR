@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 2: Dynamic Programming Approach
+
+"Feedback with marks"  
+1. Create a 2D DP table of size (m+1) × (n+1) to store the length of common suffixes ending at each position. [1 mark]  
+   - The student correctly initializes a 2D DP table of size (n+1) × (m+1). [1 mark]
+
+2. Initialize all values in the table to 0. [1 mark]  
+   - The student initializes the table to 0 by setting `dp[i][j] = 0` when `i == 0 || j == 0`. [1 mark]
+
+3. Fill the table in a bottom-up manner: if characters match, add 1 to the diagonal value, otherwise set to 0. [1 mark]  
+   - The student correctly fills the table by checking character matches and updating the diagonal value. [1 mark]
+
+4. Keep track of the maximum value encountered in the table and return it as the result. [1 mark]  
+   - The student does not keep track of the maximum value encountered in the table and directly returns `dp[n][m]`, which is incorrect. [0 marks]
+
+"Marks Scored out of total marks"  
+3 out of 4 marks

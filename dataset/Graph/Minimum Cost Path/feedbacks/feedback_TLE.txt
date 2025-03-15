@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 2: Binary Search Approach
+
+"Feedback with marks"  
+1. Implement binary search to find first occurrence with proper initialization [0 marks]  
+   - The student's solution does not implement a binary search approach for finding occurrences.  
+2. Correctly handle mid-point calculation and boundary conditions in first search [0 marks]  
+   - The student's solution does not involve mid-point calculations or boundary conditions related to binary search.  
+3. Properly narrow search range for first occurrence based on comparison results [0 marks]  
+   - The student's solution does not narrow the search range using binary search.  
+4. Implement binary search to find last occurrence with proper initialization [0 marks]  
+   - The student's solution does not implement a binary search approach for finding occurrences.  
+5. Correctly handle mid-point calculation and boundary conditions in second search [0 marks]  
+   - The student's solution does not involve mid-point calculations or boundary conditions related to binary search.  
+6. Properly narrow search range for last occurrence based on comparison results [0 marks]  
+   - The student's solution does not narrow the search range using binary search.  
+7. Return appropriate result vector/array with both occurrences [0 marks]  
+   - The student's solution does not return a result vector/array with occurrences as it is not applicable to the problem.  
+
+"Marks Scored out of total marks"  
+0 out of 7 marks

@@ -1,0 +1,24 @@
+"Selected rubric"  
+Solution 1: Sliding Window Approach
+
+"Feedback with marks"  
+1. Initializes variables for window boundaries (i for start, j for end) [0 mark]  
+   - The solution does not explicitly initialize variables for window boundaries (i for start, j for end). Instead, it uses a single loop index.
+
+2. Initializes a variable to track the product and a variable to track maximum product found [1 mark]  
+   - The solution initializes `windowProduct` to track the product and `maxProduct` to track the maximum product found.
+
+3. Implements sliding window logic to maintain a window of size k [2 marks]  
+   - The solution correctly implements the sliding window logic by multiplying the current element to the product and dividing by the element that is sliding out of the window.
+
+4. Correctly updates maximum product when window size reaches k [1 mark]  
+   - The solution updates `maxProduct` using `Math.max(maxProduct, windowProduct)` when the window size reaches k.
+
+5. Correctly handles division by the leftmost element when sliding the window [1 mark]  
+   - The solution correctly divides `windowProduct` by `arr[i-k]` to remove the contribution of the element that is sliding out of the window.
+
+6. Returns the maximum product found [1 mark]  
+   - The solution returns `maxProduct` as the maximum product found.
+
+"Marks Scored out of total marks"  
+6 out of 7 marks

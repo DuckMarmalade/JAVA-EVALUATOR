@@ -1,0 +1,24 @@
+"Selected rubric"  
+Solution 2: Optimal Approach (Using XOR)
+
+"Feedback with marks"  
+1. Calculate the XOR of all elements in the array (this will give XOR of the two non-repeating numbers) [1 mark]  
+   - The student correctly calculates the XOR of all elements in the array to get the XOR of the two non-repeating numbers. [1 mark]
+
+2. Find the rightmost set bit in the XOR result [1 mark]  
+   - The student correctly finds the rightmost set bit in the XOR result using `xorSum & -xorSum`. [1 mark]
+
+3. Divide the elements into two groups: one with the bit set and another with the bit not set [1 mark]  
+   - The student correctly divides the elements into two groups based on the rightmost set bit. [1 mark]
+
+4. XOR all elements in the first group to get the first non-repeating element [1 mark]  
+   - The student correctly XORs all elements in the first group to get the first non-repeating element. [1 mark]
+
+5. XOR all elements in the second group to get the second non-repeating element [1 mark]  
+   - The student correctly XORs all elements in the second group to get the second non-repeating element. [1 mark]
+
+6. Return the two elements in increasing order [1 mark]  
+   - The student correctly returns the two elements in increasing order. [1 mark]
+
+"Marks Scored out of total marks"  
+6 out of 6 marks

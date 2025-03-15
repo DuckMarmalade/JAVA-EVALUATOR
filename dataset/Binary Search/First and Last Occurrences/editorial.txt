@@ -1,0 +1,427 @@
+Given a sorted array arr[] with possibly duplicate elements, the task is to find indexes of the first and last occurrences of an element x in the given array. 
+
+Examples: 
+
+
+Input : arr[] = {1, 3, 5, 5, 5, 5, 67, 123, 125}, x = 5
+Output : First Occurrence = 2
+              Last Occurrence = 5
+
+
+Input : arr[] = {1, 3, 5, 5, 5, 5, 7, 123, 125 }, x = 7
+
+
+Output : First Occurrence = 6
+              Last Occurrence = 6
+
+
+Try it on GfG Practice
+redirect icon
+A Naive Approach:
+
+
+The idea to solve this problem is iterate on the elements of given array and check given elements in an array and keep track of first and last occurrence of the found element’s index.
+
+
+Below are the steps to implement the above idea:
+
+Run a for loop and for i = 0 to n-1
+Take first = -1 and last = -1 
+When we find an element first time then we update first = i 
+We always update last=i whenever we find the element.
+We print first and last.
+Below is the implementation of the above approach:
+
+
+
+
+// Java program to find first and last occurrence of
+// an elements in given sorted array
+import java.io.*;
+ 
+class GFG {
+    // Function for finding first and last occurrence
+    // of an elements
+    public static void findFirstAndLast(int arr[], int x)
+    {
+        int n = arr.length;
+        int first = -1, last = -1;
+        for (int i = 0; i < n; i++) {
+            if (x != arr[i])
+                continue;
+            if (first == -1)
+                first = i;
+            last = i;
+        }
+        if (first != -1) {
+            System.out.println("First Occurrence = "
+                               + first);
+            System.out.println("Last Occurrence = " + last);
+        }
+        else
+            System.out.println("Not Found");
+    }
+ 
+    public static void main(String[] args)
+    {
+        int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };
+        int x = 8;
+        findFirstAndLast(arr, x);
+    }
+}
+ 
+// This code is contributed by Aditya Kumar (adityakumar129)
+Output
+First Occurrence = 8
+Last Occurrence = 9
+Time Complexity: O(n) 
+Auxiliary Space: O(1)
+
+An efficient approach using binary search: 
+1. For the first occurrence of a number 
+
+
+a) If (high >= low)
+b) Calculate  mid = low + (high – low)/2;
+c) If ((mid == 0 || x > arr[mid-1]) && arr[mid] == x)
+        return mid;
+d) Else if (x > arr[mid])
+       return first(arr, (mid + 1), high, x, n);
+e) Else
+       return first(arr, low, (mid -1), x, n);
+f) Otherwise return -1;
+
+
+2. For the last occurrence of a number 
+
+
+a) if (high >= low)
+b) calculate mid = low + (high – low)/2;
+c)if( ( mid == n-1 || x < arr[mid+1]) && arr[mid] == x )
+        return mid;
+d) else if(x < arr[mid])
+       return last(arr, low, (mid -1), x, n);
+e) else
+      return last(arr, (mid + 1), high, x, n);      
+f) otherwise return -1;
+
+
+Below is the implementation of the above approach:
+
+
+
+
+// Java program to find first and last occurrence of
+// an elements in given sorted array
+import java.io.*;
+ 
+class GFG {
+    /* if x is present in arr[] then returns the index of
+    FIRST occurrence of x in arr[0..n-1], otherwise
+    returns -1 */
+    public static int first(int arr[], int low, int high,
+                            int x, int n)
+    {
+        if (high >= low) {
+            int mid = low + (high - low) / 2;
+            if ((mid == 0 || x > arr[mid - 1])
+                && arr[mid] == x)
+                return mid;
+            else if (x > arr[mid])
+                return first(arr, (mid + 1), high, x, n);
+            else
+                return first(arr, low, (mid - 1), x, n);
+        }
+        return -1;
+    }
+ 
+    /* if x is present in arr[] then returns the index of
+    LAST occurrence of x in arr[0..n-1], otherwise
+    returns -1 */
+    public static int last(int arr[], int low, int high,
+                           int x, int n)
+    {
+        if (high >= low) {
+            int mid = low + (high - low) / 2;
+            if ((mid == n - 1 || x < arr[mid + 1])
+                && arr[mid] == x)
+                return mid;
+            else if (x < arr[mid])
+                return last(arr, low, (mid - 1), x, n);
+            else
+                return last(arr, (mid + 1), high, x, n);
+        }
+        return -1;
+    }
+ 
+    public static void main(String[] args)
+    {
+ 
+        int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };
+        int n = arr.length;
+        int x = 8;
+        System.out.println("First Occurrence = "
+                           + first(arr, 0, n - 1, x, n));
+        System.out.println("Last Occurrence = "
+                           + last(arr, 0, n - 1, x, n));
+    }
+}
+Output
+First Occurrence = 8    
+Last Occurrence = 9
+Time Complexity: O(log n) 
+Auxiliary Space: O(log n), for recursion call stack
+
+An Iterative Implementation of Binary Search Solution :
+
+
+For the first occurrence, we will first find the index of the number and then search again in the left subarray as long as we are finding the number.
+ 
+
+For the last occurrence, we will first find the index of the number and then search again in the right subarray as long as we are finding the number
+
+
+First occurrence: 
+
+Do while low <= high:
+First, find the mid element
+Check if the arr[mid] > x then the first element will occur on the left side of mid. So, bring the high pointer to mid – 1
+Check if the arr[mid] < x then the first element will occur on the right side of mid. So, bring the low pointer to mid + 1
+If arr[mid] == x then this may be the first element. So, update the result to mid and move the high pointer to mid – 1.
+Return the result.
+Last occurrence: 
+
+Do while low <= high:
+First, find the mid element
+Check if the arr[mid] > x then the last element will occur on the left side of mid. So, bring the high pointer to mid – 1
+Check if the arr[mid] < x then the last element will occur on the right side of mid. So, bring the low pointer to mid + 1
+If arr[mid] == x then this may be the last element. So, update the result to mid and move the low pointer to mid + 1.
+Finally, Return the result.
+
+
+
+// Java program to find first
+// and last occurrences of a
+// number in a given sorted array
+import java.util.*;
+class GFG {
+ 
+    // if x is present in arr[] then
+    // returns the index of FIRST
+    // occurrence of x in arr[0..n-1],
+    // otherwise returns -1
+    static int first(int arr[], int x, int n)
+    {
+        int low = 0, high = n - 1, res = -1;
+        while (low <= high) {
+            // Normal Binary Search Logic
+            int mid = (low + high) / 2;
+            if (arr[mid] > x)
+                high = mid - 1;
+            else if (arr[mid] < x)
+                low = mid + 1;
+ 
+            // If arr[mid] is same as
+            // x, we update res and
+            // move to the left half.
+            else {
+                res = mid;
+                high = mid - 1;
+            }
+        }
+        return res;
+    }
+ 
+    // If x is present in arr[] then returns
+    // the index of LAST occurrence of x in
+    // arr[0..n-1], otherwise returns -1
+    static int last(int arr[], int x, int n)
+    {
+        int low = 0, high = n - 1, res = -1;
+        while (low <= high) {
+            // Normal Binary Search Logic
+            int mid = (low + high) / 2;
+            if (arr[mid] > x)
+                high = mid - 1;
+            else if (arr[mid] < x)
+                low = mid + 1;
+ 
+            // If arr[mid] is same as x,
+            // we update res and move to
+            // the right half.
+            else {
+                res = mid;
+                low = mid + 1;
+            }
+        }
+        return res;
+    }
+ 
+    // Driver program
+    public static void main(String[] args)
+    {
+        int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };
+        int n = arr.length;
+        int x = 8;
+        System.out.println("First Occurrence = "
+                           + first(arr, x, n));
+        System.out.println("Last Occurrence = "
+                           + last(arr, x, n));
+    }
+}
+ 
+// This code is contributed by Chitranayal
+Output
+First Occurrence = 8
+Last Occurrence = 9
+Time Complexity: O(log n) 
+Auxiliary Space: O(1) 
+
+An approach using inbuilt functions:
+Below is the implementation using an inbuilt function:
+
+
+
+
+// Java program for the above approach
+import java.util.ArrayList;
+public class GFG {
+    public static int first(ArrayList list, int x)
+    {
+        // return first occurrence index
+        // of element x in ArrayList
+        // using method indexOf()
+        return list.indexOf(x);
+    }
+    public static int last(ArrayList list, int x)
+    {
+        // return last occurrence index
+        // of element x in ArrayList
+        // using method lastIndexOf()
+        return list.lastIndexOf(x);
+    }
+    public static void main(String[] args)
+    {
+        int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };
+        ArrayList<Integer> clist = new ArrayList<>();
+ 
+        // adding elements of array to ArrayList
+        for (int i : arr)
+            clist.add(i);
+        int x = 8;
+ 
+        // displaying the first occurrence
+        System.out.println("First Occurrence = "
+                           + first(clist, x));
+ 
+        // displaying the last occurrence
+        System.out.println("Last Occurrence = "
+                           + last(clist, x));
+    }
+}
+Output
+First Occurrence = 8
+Last Occurrence = 9
+Time Complexity: O(n) As Inbuilt function runs a internal for loop for finding the first index and last index of that element so it takes O(n)
+Auxiliary Space: O(1) 
+
+Another Approach:
+
+
+For the first occurrence, we will first find the index of the number and then search again in the left subarray as long as we are finding the number.
+For the last occurrence, we will first find the index of the number and then search again in the right subarray as long as we are finding the number
+
+Follow the steps mentioned below to implement the idea: 
+
+First we create an array ans[] of size 2 to store the first occurrence and last occurrence.Create 
+Create a function search(int[] nums, int target, boolean findStartIndex) to find the index value of target.
+And for first occurrence set ans[0] = search(arr, target, true) and last occurrence set ans[1] = search(arr, target, false) and these function do following things:
+                ? Set ans = -1 , start = 0 , end = arr.length – 1 .
+
+                ? Iterate a loop while start <= end , such as:
+
+                               ? Set mid = start + (end – start) / 2 .
+
+                               ? Check if target < arr[mid] ,then set end = mid – 1.
+
+                               ?  Else check if target > arr[mid], then set start = mid – 1.
+
+                               ? Otherwise , set ans = mid and check further such as 
+
+                                          ? If findStartIndex == true , then set end = mid – 1 .
+
+                                          ? Else set start = mid + 1.
+
+               ? Return ans as the index value of target.            
+
+Below is the implementation of the above approach:
+
+
+
+
+// Java program to find first
+// and last occurrences of a
+// number in a given sorted array
+import java.util.*;
+class GFG {
+ 
+    // if target is present in arr[] then
+    // returns the index of FIRST
+    // occurrence and last occurrence of target in
+    // arr[0..n-1], otherwise returns -1
+    static int search(int[] nums, int target,
+                      boolean findStartIndex)
+    {
+        int ans = -1;
+        int start = 0;
+        int end = nums.length - 1;
+        while (start <= end) {
+            // find the middle element
+            // int mid = (start + end) / 2;
+            //  might be possible that (start + end)
+            //  exceeds the range of int in  java
+            int mid = start + (end - start) / 2;
+ 
+            if (target < nums[mid]) {
+                end = mid - 1;
+            }
+            else if (target > nums[mid]) {
+                start = mid + 1;
+            }
+            else {
+                // potential ans found
+                ans = mid;
+                if (findStartIndex) {
+                    end = mid - 1;
+                }
+                else {
+                    start = mid + 1;
+                }
+            }
+        }
+ 
+        return ans;
+    }
+ 
+    // Driver program
+    public static void main(String[] args)
+    {
+        int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };
+        int n = arr.length;
+        int x = 8;
+        int[] ans = { -1, -1 };
+        // For first occurrence
+        ans[0] = search(arr,x, true);
+        if (ans[0] != -1) {
+            // For last occurrence
+            ans[1] = search(arr, x, false);
+        }
+        System.out.println("First Occurrence = " + ans[0]);
+        System.out.println("Last Occurrence = " + ans[1]);
+    }
+}
+Output
+First Occurrence: 8
+Last Occurrence: 9
+Time Complexity: O(log n)
+Auxiliary Space: O(1) 

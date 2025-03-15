@@ -1,0 +1,20 @@
+Median of 2 Sorted Arrays 
+Solution 1: Naive Approach (Using Sorting)
+1. Merge the two arrays into a single array [1 mark]
+2. Sort the merged array [1 mark]
+3. For odd length merged array, return the middle element [1 mark]
+4. For even length merged array, return the average of the two middle elements [1 mark]
+Solution 2: Better Approach (Using Merge of Merge Sort)
+1. Initialize two pointers to traverse the two arrays [1 mark]
+2. Traverse both arrays while keeping track of the middle elements [1 mark]
+3. Stop traversal when the combined count of elements reaches (n + m) / 2 [1 mark]
+4. For odd total elements, return the middle element [1 mark]
+5. For even total elements, return average of the two middle elements [1 mark]
+Solution 3: Expected Approach (Using Binary Search)
+1. Identify which array is smaller to perform binary search on it [1 mark]
+2. Initialize low and high values for binary search on the smaller array [1 mark]
+3. Calculate mid points to properly partition both arrays [1 mark]
+4. Validate the partition by checking cross-boundary conditions [1 mark]
+5. For valid partition with odd total elements, return maximum of left partition [1 mark]
+6. For valid partition with even total elements, return average of max left and min right [1 mark]
+7. Adjust binary search boundaries if partition is invalid [1 mark]

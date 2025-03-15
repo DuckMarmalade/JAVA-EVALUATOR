@@ -1,0 +1,18 @@
+"Selected rubric"  
+Solution 2: XOR Approach
+
+"Feedback with marks"  
+1. Initialize a variable to store the XOR result [1 mark]  
+   - The student initializes two variables `f` and `g` to store XOR results. This satisfies the requirement. [1 mark]
+
+2. XOR all numbers from 1 to n with this variable [1 mark]  
+   - The student correctly XORs all numbers from 1 to n using the variable `f`. [1 mark]
+
+3. XOR all elements in the input array with this variable [1 mark]  
+   - The student correctly XORs all elements in the input array using the variable `g`. [1 mark]
+
+4. Return the final XOR result as the missing number [1 mark]  
+   - The student returns the XOR of `f` and `g`, which gives the missing number. [1 mark]
+
+"Marks Scored out of total marks"  
+4 out of 4 marks

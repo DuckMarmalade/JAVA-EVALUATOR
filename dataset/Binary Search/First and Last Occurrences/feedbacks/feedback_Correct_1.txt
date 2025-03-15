@@ -1,0 +1,21 @@
+"Selected rubric"  
+Solution 1: Brute Force Approach (Linear Search)
+
+"Feedback with marks"  
+1. Initialize variables to track first and last occurrences [1 mark]  
+   - The solution initializes an `ArrayList<Integer> ans` to store the first and last occurrences. [1 mark]
+
+2. Correctly traverse the array from left to right [1 mark]  
+   - The solution uses a for loop to traverse the array from left to right. [1 mark]
+
+3. Properly update first occurrence when element is first found [1 mark]  
+   - The solution correctly updates the first occurrence when the element is first found by adding the index to `ans`. [1 mark]
+
+4. Consistently update last occurrence on each encounter of the target element [1 mark]  
+   - The solution correctly updates the last occurrence by traversing from the end of the array and adding the index to `ans`. [1 mark]
+
+5. Return appropriate result with both occurrences or [-1, -1] if not found [1 mark]  
+   - The solution returns the correct result with both occurrences or [-1, -1] if the element is not found. [1 mark]
+
+"Marks Scored out of total marks"  
+5 out of 5 marks

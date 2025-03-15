@@ -1,0 +1,25 @@
+Missing in Array
+Solution 1: Mathematical Sum Approach
+1. Initialize a variable to store the expected sum of integers from 1 to n (n*(n+1)/2) [1 mark]
+2. Calculate the actual sum of all elements in the array [1 mark]
+3. Return the difference between the expected sum and the actual sum [1 mark]
+4. Correctly handle integer overflow considerations for large values of n [1 mark]
+Solution 2: XOR Approach
+1. Initialize a variable to store the XOR result [1 mark]
+2. XOR all numbers from 1 to n with this variable [1 mark]
+3. XOR all elements in the input array with this variable [1 mark]
+4. Return the final XOR result as the missing number [1 mark]
+Solution 3: Cyclic Sort Approach
+1. Implement the cyclic sort algorithm to rearrange elements to their correct positions [2 marks]
+2. Properly handle the swapping process for elements that are not in their correct position [1 mark]
+3. Iterate through the sorted array to find the first position where the index doesn't match the value [1 mark]
+4. Return the correct missing number after identifying the gap in the sequence [1 mark]
+Solution 4: Binary Search Approach (for sorted array)
+1. Check if array is sorted and sort if necessary [1 mark]
+2. Implement binary search to find the first position where the element value doesn't match its expected position [2 marks]
+3. Calculate the missing element based on the discrepancy found [1 mark]
+Solution 5: Linear Search Approach
+1. Create a boolean array or hash set to mark present elements [1 mark]
+2. Iterate through the input array and mark each element as present [1 mark]
+3. Scan through the boolean array or hash set to find the first unmarked element [1 mark]
+4. Return the missing number correctly [1 mark]

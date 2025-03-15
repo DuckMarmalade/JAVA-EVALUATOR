@@ -1,0 +1,23 @@
+"Selected rubric"  
+Solution 2: Top-Down DP (Memoization)
+
+"Feedback with marks"  
+1. Initialize a 2D array of size (n+1)×(sum+1) with sentinel values [0 marks]  
+   - The solution uses a HashMap for memoization instead of a 2D array.  
+2. Correctly index the array to match subproblem parameters [0 marks]  
+   - The solution does not use a 2D array, so this point is not applicable.  
+3. Check memo array before computing a subproblem [1 mark]  
+   - The solution correctly checks the memo HashMap before computing a subproblem.  
+4. Return stored result when available [1 mark]  
+   - The solution returns the stored result from the memo HashMap when available.  
+5. Correctly handle base cases with memoization [0 marks]  
+   - The base case for when no elements remain is incorrect (`current >= arr.length-1` should be `current >= arr.length`).  
+6. Properly implement the include/exclude choices [2 marks]  
+   - The solution correctly implements the include and exclude choices using recursion.  
+7. Store computed results in the memo array at the correct indices [1 mark]  
+   - The solution stores computed results in the memo HashMap at the correct indices.  
+8. Ensure all paths update the memoization table properly before returning [1 mark]  
+   - The solution ensures that all paths update the memoization table properly before returning.  
+
+"Marks Scored out of total marks"  
+6 out of 8 marks
